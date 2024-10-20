@@ -3,7 +3,7 @@ import "../styles/globals.css";
 
 
 export const metadata: Metadata = {
-  title: "Broom rules",
+  title: "My broom rules",
   description: "Making every home sweet",
 };
 
