@@ -8,8 +8,8 @@ pipeline {
         NAMESPACE = "tornata-ru"
         REGISTRY_HOSTNAME = "nattelanche"
         REGISTRY = "registry.hub.docker.com"
-        PROJECT = "my-broom-rules"
-        DEPLOYMENT_NAME = "my-broom-rules-deployment"
+        PROJECT = "broom-rules"
+        DEPLOYMENT_NAME = "broom-rules-deployment"
         IMAGE_NAME = "${env.BUILD_ID}_${env.ENV_TYPE}_${env.GIT_COMMIT}"
         DOCKER_BUILD_NAME = "${env.REGISTRY_HOSTNAME}/${env.PROJECT}:${env.IMAGE_NAME}"
     }
