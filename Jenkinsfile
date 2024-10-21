@@ -6,7 +6,7 @@ pipeline {
         ENV_TYPE = "production"
         PORT = 3583
         NAMESPACE = "tornata-ru"
-        REGISTRY_HOSTNAME = "natte"
+        REGISTRY_HOSTNAME = "nattelanche"
         REGISTRY = "registry.hub.docker.com"
         PROJECT = "broom-rules"
         DEPLOYMENT_NAME = "broom-rules-deployment"
