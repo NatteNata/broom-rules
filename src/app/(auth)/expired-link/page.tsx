@@ -1,5 +1,3 @@
 export default function ExpiredLinkPage() {
-    return (
-        <h2>ExpiredLink</h2>
-    );
+  return <h2>ExpiredLink</h2>
 }
