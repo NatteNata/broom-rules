@@ -1,16 +1,17 @@
-import * as React from 'react';
-import Link from "next/link";
+import * as React from 'react'
+
+import Link from 'next/link'
 
 type Props = {
-    children: React.ReactNode;
-    href: string;
-    className?: string;
+  children: React.ReactNode
+  className?: string
+  href: string
 }
 
-export const A = ({children, href, className}: Props) => {
-    return (
-        <Link href={href} className={`inline-flex items-center justify-center ${className}`}>
-            {children}
-        </Link>
-    );
-};
+export const A = ({ children, className, href }: Props) => {
+  return (
+    <Link className={`inline-flex items-center justify-center ${className}`} href={href}>
+      {children}
+    </Link>
+  )
+}
