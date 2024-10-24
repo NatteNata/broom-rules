@@ -1,24 +1,26 @@
-import Link from "next/link";
+import {A} from "@/components/A";
 
 export default function Home() {
 
     return (
-        <ul>
-            <li>
-                <Link href={'/sign-up'}>Sign up</Link>
-            </li>
-            <li>
-                <Link href={'/sign-in'}>Sign in</Link>
-            </li>
-            <li>
-                <Link href={'/forgot-password'}>Forgot password</Link>
-            </li>
-            <li>
-                <Link href={'/create-new-password'}>Create new password</Link>
-            </li>
-            <li>
-                <Link href={'/expired-link'}>Expired link</Link>
-            </li>
-        </ul>
+        <nav className='flex items-center justify-items-start mx-6 my-4'>
+            <ul>
+                <li>
+                    <A href={'/sign-up'}>Sign up</A>
+                </li>
+                <li>
+                    <A href={'/sign-in'}>Sign in</A>
+                </li>
+                <li>
+                    <A href={'/forgot-password'}>Forgot password</A>
+                </li>
+                <li>
+                    <A href={'/create-new-password'}>Create new password</A>
+                </li>
+                <li>
+                    <A href={'/expired-link'}>Expired link</A>
+                </li>
+            </ul>
+        </nav>
     );
 }
