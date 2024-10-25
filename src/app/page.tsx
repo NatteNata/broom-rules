@@ -1,5 +1,7 @@
 import { A } from '@/components/A'
 
+import { Button } from '../../../broom-rules-ui'
+
 export default function Home() {
   return (
     <nav className={'flex items-center justify-items-start mx-6 my-4'}>
@@ -19,6 +21,7 @@ export default function Home() {
         <li>
           <A href={'/expired-link'}>Expired link</A>
         </li>
+        <Button>Does it really work?</Button>
       </ul>
     </nav>
   )
