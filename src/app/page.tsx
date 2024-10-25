@@ -1,6 +1,5 @@
 import { A } from '@/components/A'
-
-import { Button } from '../../../broom-rules-ui'
+import { Button } from 'broom-rules-ui'
 
 export default function Home() {
   return (
