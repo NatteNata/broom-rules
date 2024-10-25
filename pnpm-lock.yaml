@@ -20,7 +20,7 @@ importers:
       react-dom:
         specifier: ^18
         version: 18.3.1(react@18.3.1)
-      ui:
+      ui-kit:
         specifier: file:../broom-rules-ui
         version: broom-rules-ui@file:../broom-rules-ui(@types/react-dom@18.3.1)(@types/react@18.3.11)
     devDependencies:
