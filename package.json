@@ -15,7 +15,7 @@
     "next": "15.0.1",
     "react": "^18",
     "react-dom": "^18",
-    "ui": "file:../broom-rules-ui"
+    "ui-kit": "file:../broom-rules-ui"
   },
   "devDependencies": {
     "@it-incubator/eslint-config": "^1.0.3",
