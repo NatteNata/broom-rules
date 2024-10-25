@@ -21,7 +21,7 @@ export default function Home() {
         <li>
           <A href={'/expired-link'}>Expired link</A>
         </li>
-        <Button>Does it really work?</Button>
+        <Button variant={'primary'}>Hope</Button>
       </ul>
     </nav>
   )

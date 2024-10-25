@@ -5,6 +5,7 @@ import React from 'react'
 import { Header } from '@/components/Header'
 
 import '../styles/globals.css'
+import '../../../broom-rules-ui/dist/style.css'
 
 export const metadata: Metadata = {
   description: 'Making every home sweet',
