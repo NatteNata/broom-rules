@@ -24,7 +24,8 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ]
+      ],
+      "@tornata/brooms-ui/*": ["node_modules/@tornata/brooms-ui/dist/*"]
     },
     "target": "ES2017"
   },

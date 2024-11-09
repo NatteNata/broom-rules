@@ -1,27 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #0d0d0d;
-  --foreground: #fff;
+    --background: #0d0d0d;
+    --foreground: #fff;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0d0d0d;
-    --foreground: #fff;
-  }
+    :root {
+        --background: #0d0d0d;
+        --foreground: #fff;
+    }
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--foreground);
-  background: var(--background);
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    background: var(--background);
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
 }

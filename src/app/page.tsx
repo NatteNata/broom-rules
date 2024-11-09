@@ -1,10 +1,13 @@
-import { A } from '@/components/A'
-import { Button } from 'broom-rules-ui'
+'use client'
+
+import { A } from '@/components/a/A'
+import { cn } from '@/utils/merge-class-names'
+import { Button, Input } from '@tornata/brooms-ui'
 
 export default function Home() {
   return (
-    <nav className={'flex items-center justify-items-start mx-6 my-4'}>
-      <ul>
+    <nav className={cn('flex items-center justify-items-start mx-2 mt-4')}>
+      <ul className={'list-none'}>
         <li>
           <A href={'/sign-up'}>Sign up</A>
         </li>
@@ -20,7 +23,6 @@ export default function Home() {
         <li>
           <A href={'/expired-link'}>Expired link</A>
         </li>
-        <Button variant={'primary'}>Hope</Button>
       </ul>
     </nav>
   )

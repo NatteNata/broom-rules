@@ -2,14 +2,15 @@ import type { Metadata } from 'next'
 
 import React from 'react'
 
-import { Header } from '@/components/Header'
+import AppHeader from '@/components/header/AppHeader'
+import Wrapper from '@/components/wrapper/Wrapper'
 
 import '../styles/globals.css'
-import 'broom-rules-ui/style.css'
+import '@tornata/brooms-ui/style.css'
 
 export const metadata: Metadata = {
-  description: 'Making every home sweet',
-  title: 'My broom rules',
+  description: 'For a better world',
+  title: 'Tornata | Be the change',
 }
 
 export default function RootLayout({
@@ -20,8 +21,10 @@ export default function RootLayout({
   return (
     <html lang={'en'}>
       <body>
-        <Header />
-        {children}
+        <Wrapper>
+          <AppHeader />
+          {children}
+        </Wrapper>
       </body>
     </html>
   )
