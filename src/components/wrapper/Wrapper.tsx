@@ -1,7 +1,9 @@
+import { ReactNode } from 'react'
+
 import { cn } from '../../../../broom-rules-ui/src/utils/merge-class-names'
 
 type Props = {
-  children?: React.ReactNode
+  children?: ReactNode
   className?: string
 }
 
