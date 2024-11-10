@@ -1,7 +1,7 @@
 'use client'
 
 import { A } from '@/components/a/A'
-import { cn } from '@/utils/merge-class-names'
+import { cn } from '@/utils'
 
 export default function Home() {
   return (
@@ -21,6 +21,12 @@ export default function Home() {
         </li>
         <li>
           <A href={'/expired-link'}>Expired link</A>
+        </li>
+        <li>
+          <A href={'/terms-of-service'}>Terms of Service</A>
+        </li>
+        <li>
+          <A href={'/privacy-policy'}>Privacy Policy</A>
         </li>
       </ul>
     </nav>

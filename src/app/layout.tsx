@@ -5,7 +5,7 @@ import React from 'react'
 import AppHeader from '@/components/header/AppHeader'
 import Wrapper from '@/components/wrapper/Wrapper'
 
-import '../styles/globals.css'
+import '@/styles/globals.css'
 import '@tornata/brooms-ui/style.css'
 
 export const metadata: Metadata = {

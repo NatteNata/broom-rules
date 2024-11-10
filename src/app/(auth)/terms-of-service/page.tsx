@@ -1,12 +1,12 @@
 'use client'
 
 import Wrapper from '@/components/wrapper/Wrapper'
-import { WtSignUp } from '@/widgets/auth/wt-sign-up'
+import { WtTermsOfService } from '@/widgets/auth/wt-terms-of-service'
 
-export default function SignUpPage() {
+export default function TermsOfServicePage() {
   return (
     <Wrapper className={'flex flex-col items-center justify-start my-6'}>
-      <WtSignUp />
+      <WtTermsOfService />
     </Wrapper>
   )
 }
