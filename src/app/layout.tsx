@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 
 import React from 'react'
 
-import AppHeader from '@/components/header/AppHeader'
-import Wrapper from '@/components/wrapper/Wrapper'
+import { AppHeader } from '@/components/header/AppHeader'
+import { Wrapper } from '@/components/wrapper/Wrapper'
 
-import '@/styles/globals.css'
 import '@tornata/brooms-ui/style.css'
+import '@/styles/globals.css'
 
 export const metadata: Metadata = {
   description: 'For a better world',

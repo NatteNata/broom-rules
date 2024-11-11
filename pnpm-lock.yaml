@@ -57,9 +57,6 @@ importers:
       postcss:
         specifier: ^8.4.47
         version: 8.4.47
-      stylelint:
-        specifier: ^16.10.0
-        version: 16.10.0(typescript@5.6.3)
       tailwindcss:
         specifier: ^3.4.14
         version: 3.4.14

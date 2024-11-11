@@ -29,6 +29,7 @@ export default function Home() {
           <A href={'/privacy-policy'}>Privacy Policy</A>
         </li>
       </ul>
+      <div className={cn('bg-red-400 text-fuchsia-700 font-bold p-6')}>TEST TW</div>
     </nav>
   )
 }

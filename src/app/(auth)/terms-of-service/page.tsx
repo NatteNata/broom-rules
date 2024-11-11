@@ -1,6 +1,6 @@
 'use client'
 
-import Wrapper from '@/components/wrapper/Wrapper'
+import { Wrapper } from '@/components/wrapper/Wrapper'
 import { WtTermsOfService } from '@/widgets/auth/wt-terms-of-service'
 
 export default function TermsOfServicePage() {

@@ -1,6 +1,6 @@
 'use client'
 
-import Wrapper from '@/components/wrapper/Wrapper'
+import { Wrapper } from '@/components/wrapper/Wrapper'
 import { WtSignIn } from '@/widgets/auth/wt-sign-in'
 
 export default function SignInPage() {

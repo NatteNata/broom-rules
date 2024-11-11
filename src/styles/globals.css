@@ -6,25 +6,27 @@
 @tailwind utilities;
 
 :root {
-    --background: #0d0d0d;
-    --foreground: #fff;
+    --color-background: #0d0d0d;
+    --color-base: #8D9094;
+    --color-primary: #397DF6;
+    --font-base: 'Inter';
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0d0d0d;
-        --foreground: #fff;
+@layer base {
+    body {
+        font-family: var(--font-base), sans-serif;
+        background-color: var(--color-background);
+        color: var(--color-base);
     }
-}
 
-body {
-    font-family: Inter, Arial, Helvetica, sans-serif;
-    color: var(--foreground);
-    background: var(--background);
-}
+    *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-@layer utilities {
-    .text-balance {
-        text-wrap: balance;
+    img, video {
+        max-width: 100%;
+        height: auto;
     }
 }

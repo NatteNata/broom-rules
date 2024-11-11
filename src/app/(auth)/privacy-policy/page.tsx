@@ -1,6 +1,6 @@
 'use client'
 
-import Wrapper from '@/components/wrapper/Wrapper'
+import { Wrapper } from '@/components/wrapper/Wrapper'
 import { cn } from '@/utils'
 import { WtPrivacyPolicy } from '@/widgets/auth/wt-privacy-policy'
 

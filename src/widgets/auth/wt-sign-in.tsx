@@ -1,3 +1,5 @@
+'use client'
+
 import { A } from '@/components/a/A'
 import { FormSignIn } from '@/features/auth/form-sign-in'
 import { Button, Card, Typography } from '@tornata/brooms-ui'

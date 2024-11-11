@@ -1,5 +1,5 @@
 import { A } from '@/components/a/A'
-import Wrapper from '@/components/wrapper/Wrapper'
+import { Wrapper } from '@/components/wrapper/Wrapper'
 import { TermsOfService } from '@/features/auth/terms-of-service'
 import { cn } from '@/utils/class-names-merge'
 import { Button, IconArrowBackOutline } from '@tornata/brooms-ui'
