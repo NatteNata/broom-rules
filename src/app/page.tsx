@@ -1,7 +1,8 @@
 'use client'
-
 import { A } from '@/components/a/A'
-import { cn } from '@/utils'
+import { Button } from '@tornata/broom-ui'
+import Link from 'next/link'
+import { cn } from 'src/shared/utils'
 
 export default function Home() {
   return (
@@ -28,8 +29,13 @@ export default function Home() {
         <li>
           <A href={'/privacy-policy'}>Privacy Policy</A>
         </li>
+        <li>
+          <A href={'/test-run'}>Test run</A>
+        </li>
       </ul>
-      <div className={cn('bg-red-400 text-fuchsia-700 font-bold p-6')}>TEST TW</div>
+      <Button asChild>
+        <Link href={'/sign-in'}>Test button</Link>
+      </Button>
     </nav>
   )
 }

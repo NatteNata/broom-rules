@@ -1,7 +1,7 @@
 import { A } from '@/components/a/A'
 import { Wrapper } from '@/components/wrapper/Wrapper'
 import { TermsOfService } from '@/features/auth/terms-of-service'
-import { cn } from '@/utils/class-names-merge'
+import { cn } from '@/shared/utils/class-names-merge'
 import { Button, IconArrowBackOutline } from '@tornata/brooms-ui'
 
 export const WtTermsOfService = () => {
@@ -15,7 +15,7 @@ export const WtTermsOfService = () => {
           </A>
         </Button>
       </div>
-      <Wrapper className={cn('flex flex-col items-center justify-start mx-20')}>
+      <Wrapper className={cn('flex flex-col items-center justify-start')}>
         <TermsOfService />
       </Wrapper>
     </>

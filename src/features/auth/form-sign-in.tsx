@@ -12,8 +12,12 @@ export const FormSignIn = () => {
         required
         type={'password'}
       />
-      <A href={'/forgot-password'}>Forgot password?</A>
-      <Button asChild fullWidth variant={'primary'}>
+      <div className={'flex justify-end'}>
+        <A className={'mt-2'} href={'/forgot-password'}>
+          Forgot password?
+        </A>
+      </div>
+      <Button asChild className={'mt-6 mb-5'} fullWidth variant={'primary'}>
         <A href={'/sign-in'}>Sign in</A>
       </Button>
     </form>

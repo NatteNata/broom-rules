@@ -5,8 +5,8 @@ import React from 'react'
 import { AppHeader } from '@/components/header/AppHeader'
 import { Wrapper } from '@/components/wrapper/Wrapper'
 
+import '@/shared/styles/global.css'
 import '@tornata/brooms-ui/style.css'
-import '@/styles/globals.css'
 
 export const metadata: Metadata = {
   description: 'For a better world',
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang={'en'}>
       <body>
-        <Wrapper>
+        <Wrapper className={'max-w-screen-2xl'}>
           <AppHeader />
           {children}
         </Wrapper>

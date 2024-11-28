@@ -13,9 +13,15 @@ export const FormSignUp = () => {
         required
         type={'password'}
       />
-      <Input label={'Confirm password'} name={'confirmPassword'} required type={'password'} />
+      <Input
+        className={'mb-3'}
+        label={'Confirm password'}
+        name={'confirmPassword'}
+        required
+        type={'password'}
+      />
       <Checkbox label={TACs} name={'tacs'} />
-      <Button fullWidth variant={'primary'}>
+      <Button className={'mt-3 mb-4'} fullWidth variant={'primary'}>
         Sign up
       </Button>
     </form>
@@ -26,13 +32,13 @@ const TACs = (
   <Typography asElement={'p'} variant={'small_text'}>
     I agree to the
     <A href={'/terms-of-service'}>
-      <Typography asElement={'span'} variant={'small_link'}>
+      <Typography asElement={'span'} className={'mx-1'} variant={'small_link'}>
         Terms of Service
       </Typography>
     </A>
     and
     <A href={'/privacy-policy'}>
-      <Typography asElement={'span'} variant={'small_link'}>
+      <Typography asElement={'span'} className={'mx-1'} variant={'small_link'}>
         Privacy Policy
       </Typography>
     </A>

@@ -1,8 +1,8 @@
 import { A } from '@/components/a/A'
 import { Wrapper } from '@/components/wrapper/Wrapper'
 import { PrivacyPolicy } from '@/features/auth/privacy-policy'
-import { cn } from '@/utils'
 import { Button, IconArrowBackOutline } from '@tornata/brooms-ui'
+import { cn } from 'src/shared/utils'
 
 export const WtPrivacyPolicy = () => {
   return (
@@ -15,7 +15,7 @@ export const WtPrivacyPolicy = () => {
           </A>
         </Button>
       </div>
-      <Wrapper className={cn('flex flex-col items-center justify-start mx-20')}>
+      <Wrapper className={cn('flex flex-col items-center justify-start')}>
         <PrivacyPolicy />
       </Wrapper>
     </>

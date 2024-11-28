@@ -1,8 +1,8 @@
 'use client'
 
 import { Wrapper } from '@/components/wrapper/Wrapper'
-import { cn } from '@/utils'
 import { WtPrivacyPolicy } from '@/widgets/auth/wt-privacy-policy'
+import { cn } from 'src/shared/utils'
 
 export default function PrivacyPolicyPage() {
   return (

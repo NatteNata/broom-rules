@@ -1,5 +1,5 @@
-import { cn } from '@/utils'
 import { Typography } from '@tornata/brooms-ui'
+import { cn } from 'src/shared/utils'
 
 export const PrivacyPolicy = () => {
   return (
@@ -9,7 +9,7 @@ export const PrivacyPolicy = () => {
           Privacy Policy
         </Typography>
       </div>
-      <div className={'w-1/2 mx-20'}>
+      <div className={'w-5/6 text-center'}>
         <Typography asElement={'p'} variant={'medium_text_14'}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua. Fames ac turpis egestas integer eget aliquet nibh. Amet
