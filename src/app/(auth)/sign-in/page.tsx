@@ -1,5 +1,12 @@
+'use client'
+
+import { Wrapper } from '@/shared/components'
+import { SignInCard } from '@/widgets/auth/sign-in-card'
+
 export default function SignInPage() {
-    return (
-        <h2>Sign in</h2>
-    );
+  return (
+    <Wrapper className={'flex flex-col items-center justify-start my-6'}>
+      <SignInCard />
+    </Wrapper>
+  )
 }

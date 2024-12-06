@@ -1,24 +1,30 @@
-import type {Metadata} from "next";
-import "../styles/globals.css";
-import { Header } from "@/components/Header";
+import type { Metadata } from 'next'
 
+import React from 'react'
+
+import { AppHeader, Wrapper } from '@/shared/components'
+
+import '@/shared/styles/global.css'
+import '@tornata/brooms-ui/style.css'
 
 export const metadata: Metadata = {
-  title: "My broom rules",
-  description: "Making every home sweet",
-};
+  description: 'For a better world',
+  title: 'Tornata | Be the change',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang={'en'}>
       <body>
-      <Header/>
-        {children}
+        <Wrapper className={'max-w-screen-2xl'}>
+          <AppHeader />
+          {children}
+        </Wrapper>
       </body>
     </html>
-  );
+  )
 }
