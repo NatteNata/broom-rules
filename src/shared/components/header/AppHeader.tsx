@@ -1,4 +1,4 @@
-import { A } from '@/components/a/A'
+import { A } from '@/shared/components'
 import { Header, LogoComponent } from '@tornata/brooms-ui'
 
 export function AppHeader() {

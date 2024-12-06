@@ -1,11 +1,11 @@
 'use client'
 
-import { A } from '@/components/a/A'
 import { FormSignIn } from '@/features/auth/form-sign-in'
+import { A } from '@/shared/components'
 import { Button, Card, Typography } from '@tornata/brooms-ui'
 import { cn } from 'src/shared/utils'
 
-export const WtSignIn = () => {
+export const SignInCard = () => {
   return (
     <Card className={cn('p-6 flex flex-col items-center justify-center max-w-96')}>
       <Typography asElement={'h2'} variant={'h1'}>

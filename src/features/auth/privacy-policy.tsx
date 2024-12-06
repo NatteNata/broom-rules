@@ -1,9 +1,10 @@
+import { Wrapper } from '@/shared/components'
 import { Typography } from '@tornata/brooms-ui'
 import { cn } from 'src/shared/utils'
 
 export const PrivacyPolicy = () => {
   return (
-    <>
+    <Wrapper className={cn('flex flex-col items-center justify-start')}>
       <div className={cn('mb-5')}>
         <Typography asElement={'h1'} variant={'h1'}>
           Privacy Policy
@@ -82,6 +83,6 @@ export const PrivacyPolicy = () => {
           ornare. Feugiat nibh sed pulvinar proin.
         </Typography>
       </div>
-    </>
+    </Wrapper>
   )
 }

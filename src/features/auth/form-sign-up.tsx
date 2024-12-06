@@ -1,4 +1,4 @@
-import { A } from '@/components/a/A'
+import { A } from '@/shared/components'
 import { Button, Checkbox, Input, Typography } from '@tornata/brooms-ui'
 
 export const FormSignUp = () => {

@@ -1,24 +1,18 @@
 import { A } from '@/shared/components'
 import { Button, Input } from '@tornata/brooms-ui'
+import Link from 'next/link'
 
-export const FormSignIn = () => {
+export const FormForgotPassword = () => {
   return (
     <form action={''}>
       <Input label={'Email'} name={'email'} placeholder={'Epam@epam.com'} required type={'email'} />
-      <Input
-        label={'Password'}
-        name={'password'}
-        placeholder={'Somecool345&^password'}
-        required
-        type={'password'}
-      />
       <div className={'flex justify-end'}>
         <A className={'mt-2'} href={'/forgot-password'}>
-          Forgot password?
+          Enter your email address and we will send you further instructions
         </A>
       </div>
       <Button asChild className={'mt-6 mb-5'} fullWidth variant={'primary'}>
-        <A href={'/sign-in'}>Sign in</A>
+        <Link href={'/create-new-password'}>Create new password</Link>
       </Button>
     </form>
   )

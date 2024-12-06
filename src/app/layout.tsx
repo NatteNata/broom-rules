@@ -2,8 +2,7 @@ import type { Metadata } from 'next'
 
 import React from 'react'
 
-import { AppHeader } from '@/components/header/AppHeader'
-import { Wrapper } from '@/components/wrapper/Wrapper'
+import { AppHeader, Wrapper } from '@/shared/components'
 
 import '@/shared/styles/global.css'
 import '@tornata/brooms-ui/style.css'

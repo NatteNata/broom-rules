@@ -1,14 +1,13 @@
+import { Wrapper } from '@/shared/components'
 import { Typography } from '@tornata/brooms-ui'
 import { cn } from 'src/shared/utils'
 
 export const TermsOfService = () => {
   return (
-    <>
-      <div className={cn('mb-5')}>
-        <Typography asElement={'h1'} variant={'h1'}>
-          Terms of Service
-        </Typography>
-      </div>
+    <Wrapper className={cn('flex flex-col items-center justify-start')}>
+      <Typography asElement={'h1'} className={cn('mb-5')} variant={'h1'}>
+        Terms of Service
+      </Typography>
       <div className={'w-5/6 text-center'}>
         <Typography asElement={'p'} variant={'medium_text_14'}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -82,6 +81,6 @@ export const TermsOfService = () => {
           ornare. Feugiat nibh sed pulvinar proin.
         </Typography>
       </div>
-    </>
+    </Wrapper>
   )
 }

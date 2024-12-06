@@ -1,9 +1,9 @@
-import { A } from '@/components/a/A'
 import { FormSignUp } from '@/features/auth/form-sign-up'
 import { Button, Card, Typography } from '@tornata/brooms-ui'
+import Link from 'next/link'
 import { cn } from 'src/shared/utils'
 
-export const WtSignUp = () => {
+export const SignUpCard = () => {
   return (
     <>
       <Card className={cn('p-6 flex flex-col items-center justify-center max-w-96')}>
@@ -15,7 +15,7 @@ export const WtSignUp = () => {
           Do you have an account?
         </Typography>
         <Button asChild className={'mt-1.5'} variant={'ghost'}>
-          <A href={'/sign-in'}>Sign in</A>
+          <Link href={'/sign-in'}>Sign in</Link>
         </Button>
       </Card>
     </>
