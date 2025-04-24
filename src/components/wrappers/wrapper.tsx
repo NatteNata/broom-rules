@@ -1,0 +1,18 @@
+import { JSX, type ReactNode } from 'react'
+import IntrinsicElements = JSX.IntrinsicElements
+
+import { cn } from '@/use-cases/utils'
+
+type Props = {
+	children?: ReactNode
+	className?: string
+	as?: keyof IntrinsicElements
+}
+
+export function Wrapper({ children, className, as: Tag = 'div' }: Props) {
+	return (
+		<div className={cn('mt-16 flex items-center justify-start', className)}>
+			{children}
+		</div>
+	)
+}

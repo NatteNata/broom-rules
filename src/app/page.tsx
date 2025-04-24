@@ -1,34 +1,18 @@
-'use client'
+import { Sidebar } from '@/components/sidebar'
 
-import { A } from '@/shared/components'
-import { cn } from 'src/shared/utils'
-
-export default function Home() {
-  return (
-    <nav className={cn('flex items-center justify-items-start mx-2 mt-4')}>
-      <ul className={'list-none'}>
-        <li>
-          <A href={'/sign-up'}>Sign up</A>
-        </li>
-        <li>
-          <A href={'/sign-in'}>Sign in</A>
-        </li>
-        <li>
-          <A href={'/forgot-password'}>Forgot password</A>
-        </li>
-        <li>
-          <A href={'/create-new-password'}>Create new password</A>
-        </li>
-        <li>
-          <A href={'/expired-link'}>Expired link</A>
-        </li>
-        <li>
-          <A href={'/terms-of-service'}>Terms of Service</A>
-        </li>
-        <li>
-          <A href={'/privacy-policy'}>Privacy Policy</A>
-        </li>
-      </ul>
-    </nav>
-  )
+export default async function Home() {
+	return (
+		<div className='container mx-auto flex px-4 py-8'>
+			<Sidebar />
+			<div className='m-10 flex flex-col gap-4'>
+				<div>Counter</div>
+				<div className='m-10 flex gap-4'>
+					<div className='h-32 w-32 bg-amber-300'>Post 1</div>
+					<div className='h-32 w-32 bg-red-300'>Post 2</div>
+					<div className='h-32 w-32 bg-gray-300'>Post 3</div>
+					<div className='h-32 w-32 bg-cyan-300'>Post 4</div>
+				</div>
+			</div>
+		</div>
+	)
 }

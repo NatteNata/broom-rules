@@ -1,10 +1,8 @@
-import { Wrapper } from '@/shared/components'
-import { ForgotPasswordCard } from '@/widgets/auth/forgot-password-card'
+'use client'
+
+import { ForgotPasswordCard } from '@/app/(auth)/forgot-password/forgot-password-card'
+import { Wrapper } from 'src/components'
 
 export default function ForgotPasswordPage() {
-  return (
-    <Wrapper className={'flex flex-col items-center justify-start my-6'}>
-      <ForgotPasswordCard />
-    </Wrapper>
-  )
+	return <ForgotPasswordCard />
 }

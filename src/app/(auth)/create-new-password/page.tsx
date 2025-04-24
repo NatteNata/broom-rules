@@ -1,10 +1,8 @@
-import { Wrapper } from '@/shared/components'
-import { CreateNewPasswordCard } from '@/widgets/auth/create-new-password-card'
+'use client'
+
+import { CreateNewPasswordCard } from '@/app/(auth)/create-new-password/create-new-password-card'
+import { Wrapper } from 'src/components'
 
 export default function CreateNewPasswordPage() {
-  return (
-    <Wrapper className={'flex flex-col items-center justify-start my-6'}>
-      <CreateNewPasswordCard />
-    </Wrapper>
-  )
+	return <CreateNewPasswordCard />
 }
