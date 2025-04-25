@@ -1,13 +1,15 @@
 'use client'
 
-import { cn } from '@/use-cases/utils'
-import { useRegistration } from '@api/auth/auth.hooks'
-import { SignUpTerms } from '@app/(auth)/sign-up/sign-up-terms'
-import { FormCheckbox } from '@components/form/form-checkbox'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Button, Input, Typography } from 'penguin-ui'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
+
+import { useRegistration } from '@api/auth/auth.hooks'
+import { FormCheckbox } from '@components'
+import { SignUpTerms } from './sign-up-terms'
+
+import { cn } from '@/use-cases/utils'
+import { Button, Input, Typography } from 'penguin-ui'
 
 const signUpSchema = z
 	.object({

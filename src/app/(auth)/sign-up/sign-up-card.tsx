@@ -1,11 +1,13 @@
 'use client'
 
-import { SignUpForm } from '@/app/(auth)/sign-up/sign-up-form'
-import { cn } from '@/use-cases/utils'
 import Link from 'next/link'
 import { useState } from 'react'
 
-import { SignUpModal } from '@app/(auth)/sign-up/sign-up-modal'
+import { cn } from '@/use-cases/utils'
+
+import { SignUpForm } from './sign-up-form'
+import { SignUpModal } from './sign-up-modal'
+
 import { Button, Card, Typography } from 'penguin-ui'
 
 export const SignUpCard = () => {
