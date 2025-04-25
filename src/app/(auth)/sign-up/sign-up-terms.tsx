@@ -1,7 +1,7 @@
 import { A } from '@/components'
 import { Typography } from 'penguin-ui'
 
-export const TermsAndPolicy = () => (
+export const SignUpTerms = () => (
 	<Typography asElement={'p'} variant={'small_text'}>
 		I agree to the
 		<A href={'/terms-of-service'}>
