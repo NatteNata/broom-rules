@@ -1,5 +1,6 @@
 'use client'
 
+import { Checkbox } from 'penguin-ui'
 import type { ComponentProps } from 'react'
 import {
 	type Control,
@@ -7,8 +8,6 @@ import {
 	type UseControllerProps,
 	useController,
 } from 'react-hook-form'
-
-import { Checkbox } from 'penguin-ui'
 
 type Props<T extends FieldValues> = {
 	control: Control<T>

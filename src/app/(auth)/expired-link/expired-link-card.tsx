@@ -1,7 +1,6 @@
-import { ExpiredLinkForm } from '@/app/(auth)/expired-link/expired-link-form'
-import { TimeManagementRafiki } from '@/components/images/time-management-rafiki'
-import { Wrapper } from '@components'
+import { TimeManagementRafiki, Wrapper } from '@app/ui/components'
 import { Typography } from 'penguin-ui'
+import { ExpiredLinkForm } from './expired-link-form'
 
 export const ExpiredLinkCard = () => {
 	return (

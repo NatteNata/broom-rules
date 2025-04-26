@@ -1,19 +1,19 @@
-import { A } from '@/components'
+import { Link } from '@app/ui/components'
 import { Typography } from 'penguin-ui'
 
 export const SignUpTerms = () => (
 	<Typography asElement={'p'} variant={'small_text'}>
 		I agree to the
-		<A href={'/terms-of-service'}>
+		<Link href={'/terms-of-service'}>
 			<Typography asElement={'span'} className={'mx-1'} variant={'small_link'}>
 				Terms of Service
 			</Typography>
-		</A>
+		</Link>
 		and
-		<A href={'/privacy-policy'}>
+		<Link href={'/privacy-policy'}>
 			<Typography asElement={'span'} className={'mx-1'} variant={'small_link'}>
 				Privacy Policy
 			</Typography>
-		</A>
+		</Link>
 	</Typography>
 )

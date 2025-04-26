@@ -1,5 +1,4 @@
-import { A } from '@/components'
-import Link from 'next/link'
+import { Link } from '@app/ui/components'
 
 import { Button, Input } from 'penguin-ui'
 
@@ -21,9 +20,9 @@ export const CreateNewPasswordForm = () => {
 				type={'password'}
 			/>
 			<div className={'flex justify-end'}>
-				<A className={'mt-2'} href={'/forgot-password'}>
+				<Link className={'mt-2'} href={'/forgot-password'}>
 					Your password must be between 6 and 20 characters
-				</A>
+				</Link>
 			</div>
 			<Button asChild className={'mt-6 mb-5'} fullWidth variant={'primary'}>
 				<Link href={'/sign-in'}>Create new password</Link>

@@ -1,6 +1,6 @@
 'use client'
 
-import { A } from '@/components'
+import { Link } from '@app/ui/components'
 import { Button, Input } from 'penguin-ui'
 
 export const ExpiredLinkForm = () => {
@@ -14,7 +14,7 @@ export const ExpiredLinkForm = () => {
 			/>
 
 			<Button variant='primary' asChild className='mb-2 px-12' type='submit'>
-				<A href={'/sign-in'}>Resend verification link</A>
+				<Link href={'/sign-in'}>Resend verification link</Link>
 			</Button>
 		</form>
 	)

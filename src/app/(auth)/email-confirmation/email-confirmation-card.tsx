@@ -1,7 +1,7 @@
 'use client'
 
-import { A } from '@/components'
-import { SignUpBro } from '@/components/images/sign-up-bro'
+import { SignUpBro } from '@app/ui/components'
+import { Link } from '@components/link'
 import { Button, Typography } from 'penguin-ui'
 
 export const EmailConfirmationCard = () => {
@@ -22,7 +22,7 @@ export const EmailConfirmationCard = () => {
 				Your email has been confirmed.
 			</Typography>
 			<Button variant='primary' asChild className='mb-2 px-12'>
-				<A href={'/sign-in'}>Sign In</A>
+				<Link href={'/sign-in'}>Sign In</Link>
 			</Button>
 			<div className='mt-16'>
 				<SignUpBro />

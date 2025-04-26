@@ -20,10 +20,10 @@
 		],
 		"baseUrl": ".",
 		"paths": {
-			"@*": ["./src/*"],
+			"@components/*": ["./src/app/ui/components/*"],
 			"@app": ["./src/app/*"],
-			"@components/*": ["./src/components/*"],
-			"@utils/*": ["./src/use-cases/utils/*"]
+			"@utils/*": ["./src/use-cases/utils/*"],
+			"@*": ["./src/*"]
 		},
 		"target": "ES2017"
 	},

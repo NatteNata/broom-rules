@@ -1,7 +1,7 @@
 'use client'
 
 import { PrivacyPolicy } from '@/app/(auth)/privacy-policy/privacy-policy'
-import { Wrapper } from '@/components'
+import { Wrapper } from '@app/ui/components'
 import Link from 'next/link'
 import { Button, IconArrowBackOutline } from 'penguin-ui'
 import { cn } from 'src/use-cases/utils'

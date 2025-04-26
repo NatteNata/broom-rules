@@ -4,8 +4,8 @@ import 'penguin-ui/styles.css'
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 
-import { Providers } from '@api/providers'
-import { AppHeader, Container } from '@components'
+import { AppHeader, Container } from '@app/ui/components'
+import { QueryProvider } from '@infrastructure/providers/query-provider'
 
 export const metadata: Metadata = {
 	description: 'For a better world',
@@ -20,10 +20,10 @@ export default function RootLayout({
 	return (
 		<html lang={'en'}>
 			<body>
-				<Providers>
+				<QueryProvider>
 					<AppHeader />
 					<Container as='main'>{children}</Container>
-				</Providers>
+				</QueryProvider>
 			</body>
 		</html>
 	)

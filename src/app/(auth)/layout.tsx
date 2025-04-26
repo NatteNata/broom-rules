@@ -1,4 +1,4 @@
-import { Wrapper } from '@/components'
+import { Wrapper } from '@app/ui/components'
 import type { ReactNode } from 'react'
 
 export default function AuthLayout({
@@ -7,7 +7,7 @@ export default function AuthLayout({
 	children: ReactNode
 }>) {
 	return (
-		<Wrapper as='section' className='justify-center'>
+		<Wrapper as='section' className='justify-center pt-6'>
 			{children}
 		</Wrapper>
 	)

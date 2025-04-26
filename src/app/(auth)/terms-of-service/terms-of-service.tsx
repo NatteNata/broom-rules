@@ -1,5 +1,5 @@
 import { cn } from '@/use-cases/utils'
-import { Container } from '@components'
+import { Container } from '@app/ui/components'
 
 import { Typography } from 'penguin-ui'
 

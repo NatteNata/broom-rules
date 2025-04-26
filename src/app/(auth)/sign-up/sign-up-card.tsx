@@ -14,6 +14,11 @@ export const SignUpCard = () => {
 	const [showModal, setShowModal] = useState(false)
 	const [email, setEmail] = useState('')
 
+	const onSignUpSubmit = (email: string) => {
+		setShowModal(true)
+		setEmail(email)
+	}
+
 	return (
 		<>
 			<Card
@@ -24,7 +29,7 @@ export const SignUpCard = () => {
 				<Typography asElement={'h2'} variant={'h1'}>
 					Sign up
 				</Typography>
-				<SignUpForm setShowModal={setShowModal} setEmail={setEmail} />
+				<SignUpForm onSignUpSubmit={onSignUpSubmit} />
 				<Typography asElement={'span'} variant={'regular_text_16'}>
 					Do you have an account?
 				</Typography>

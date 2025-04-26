@@ -19,8 +19,8 @@ export function Container({
 	return (
 		<Tag
 			className={cn(
-				'm-auto w-full',
-				'max-w-screen-xl px-4 sm:px-6 lg:px-8',
+				'm-auto w-full p-4',
+				'max-w-screen-xl',
 				fullHeight && 'min-h-screen',
 				className,
 			)}

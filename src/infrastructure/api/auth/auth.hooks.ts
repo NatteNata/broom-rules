@@ -8,7 +8,7 @@ import {
 	registration,
 	registrationConfirmation,
 	updateTokens,
-} from '@api/auth/auth.api'
+} from '@infrastructure/api/auth/auth.api'
 import type {
 	EmailResendArgs,
 	LoginArgs,
@@ -17,7 +17,7 @@ import type {
 	PasswordRecoveryResendArgs,
 	RegistrationArgs,
 	RegistrationConfirmationArgs,
-} from '@api/auth/auth.types'
+} from '@infrastructure/api/auth/auth.types'
 import { useMutation } from '@tanstack/react-query'
 
 export const useLogin = (args: LoginArgs) =>

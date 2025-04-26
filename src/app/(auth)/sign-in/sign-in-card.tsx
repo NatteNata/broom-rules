@@ -1,8 +1,8 @@
 'use client'
 
 import { SignInForm } from '@/app/(auth)/sign-in/sign-in-form'
-import { A } from '@/components'
 import { cn } from '@/use-cases/utils'
+import { Link } from '@app/ui/components'
 
 import { Button, Card, Typography } from 'penguin-ui'
 
@@ -25,7 +25,7 @@ export const SignInCard = () => {
 				Don&#39;t have an account?
 			</Typography>
 			<Button asChild className='mt-1.5' variant='ghost'>
-				<A href={'/sign-up'}>Sign up</A>
+				<Link href={'/sign-up'}>Sign up</Link>
 			</Button>
 		</Card>
 	)

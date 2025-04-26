@@ -1,6 +1,6 @@
 'use client'
 
-import { A } from '@/components'
+import { Link } from '@app/ui/components'
 import { Button, Input } from 'penguin-ui'
 
 export const SignInForm = () => {
@@ -21,12 +21,12 @@ export const SignInForm = () => {
 				type={'password'}
 			/>
 			<div className={'flex justify-end'}>
-				<A className={'mt-2'} href={'/forgot-password'}>
+				<Link className={'mt-2'} href={'/forgot-password'}>
 					Forgot password?
-				</A>
+				</Link>
 			</div>
 			<Button asChild className={'mt-6 mb-5'} fullWidth variant={'primary'}>
-				<A href={'/sign-in'}>Sign in</A>
+				<Link href={'/sign-in'}>Sign in</Link>
 			</Button>
 		</form>
 	)

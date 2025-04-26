@@ -1,8 +1,7 @@
 'use client'
 
-import { Wrapper } from '@components'
+import { Link, Wrapper } from '@app/ui/components'
 import { cn } from '@use-cases'
-import Link from 'next/link'
 import { Button, IconArrowBackOutline } from 'penguin-ui'
 import { TermsOfService } from './terms-of-service'
 
