@@ -1,0 +1,1 @@
+export { Recapcha } from './recapcha'

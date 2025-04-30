@@ -11,7 +11,7 @@ import type {
 	RegistrationArgs,
 	RegistrationConfirmationArgs,
 	UpdateTokensResponse,
-} from '@infrastructure/api/auth/auth.types'
+} from '@infrastructure/api'
 import ky from 'ky'
 
 const authApi = ky.create({

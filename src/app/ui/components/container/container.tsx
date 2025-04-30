@@ -1,7 +1,6 @@
 import { JSX, type ReactNode } from 'react'
 import IntrinsicElements = JSX.IntrinsicElements
-
-import { cn } from '@/use-cases/utils'
+import { cn } from '@utils'
 
 type Props = {
 	children?: ReactNode

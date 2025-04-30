@@ -8,19 +8,14 @@ import {
 	registration,
 	registrationConfirmation,
 	updateTokens,
-} from '@infrastructure/api/auth/auth.api'
+} from '@infrastructure/api'
 import type {
 	EmailResendArgs,
-	LoginArgs,
-	NewPasswordArgs,
-	PasswordRecoveryArgs,
 	PasswordRecoveryResendArgs,
-	RegistrationArgs,
-	RegistrationConfirmationArgs,
-} from '@infrastructure/api/auth/auth.types'
+} from '@infrastructure/api'
 import { useMutation } from '@tanstack/react-query'
 
-export const useLogin = (args: LoginArgs) =>
+export const useLogin = () =>
 	useMutation({
 		mutationFn: login,
 		onSuccess: data => {
@@ -36,12 +31,12 @@ export const useLogout = () =>
 		},
 	})
 
-export const useNewPassword = (args: NewPasswordArgs) =>
+export const useNewPassword = () =>
 	useMutation({
 		mutationFn: newPassword,
 	})
 
-export const usePasswordRecovery = (args: PasswordRecoveryArgs) =>
+export const usePasswordRecovery = () =>
 	useMutation({
 		mutationFn: passwordRecovery,
 	})
@@ -56,9 +51,7 @@ export const useRegistration = () =>
 		mutationFn: registration,
 	})
 
-export const useRegistrationConfirmation = (
-	args: RegistrationConfirmationArgs,
-) =>
+export const useRegistrationConfirmation = () =>
 	useMutation({
 		mutationFn: registrationConfirmation,
 	})

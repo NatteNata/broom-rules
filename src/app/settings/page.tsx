@@ -1,17 +1,18 @@
-import { Devices } from '@/app/settings/devices/devices'
-import { Info } from '@/app/settings/info/info'
-import { Payments } from '@/app/settings/payments/payments'
-import { Subscriptions } from '@/app/settings/subsrciptions/subscriptions'
 import { redirect } from 'next/navigation'
 
-type Props = {
-	searchParams: {
-		part?: 'devices' | 'info' | 'payments' | 'subscriptions'
-	}
-}
+import { Devices } from './devices/devices'
+import { Info } from './info/info'
+import { Payments } from './payments/payments'
+import { Subscriptions } from './subsrciptions/subscriptions'
 
-export default function SettingsPage({ searchParams }: Props) {
-	const { part } = searchParams
+export default async function SettingsPage({
+	searchParams,
+}: {
+	searchParams: Promise<{
+		part?: 'devices' | 'info' | 'payments' | 'subscriptions'
+	}>
+}) {
+	const { part } = await searchParams
 
 	if (!searchParams) {
 		redirect('/settings?part=info')

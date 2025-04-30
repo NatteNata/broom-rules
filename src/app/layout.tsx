@@ -4,11 +4,11 @@ import 'penguin-ui/styles.css'
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 
-import { AppHeader, Container } from '@app/ui/components'
-import { QueryProvider } from '@infrastructure/providers/query-provider'
+import { AppHeader, Container } from '@components'
+import { TanstackProvider } from '@infrastructure/providers'
 
 export const metadata: Metadata = {
-	description: 'For a better world',
+	description: 'For link better world',
 	title: 'Tornata | Be the change',
 }
 
@@ -20,10 +20,10 @@ export default function RootLayout({
 	return (
 		<html lang={'en'}>
 			<body>
-				<QueryProvider>
+				<TanstackProvider>
 					<AppHeader />
 					<Container as='main'>{children}</Container>
-				</QueryProvider>
+				</TanstackProvider>
 			</body>
 		</html>
 	)
