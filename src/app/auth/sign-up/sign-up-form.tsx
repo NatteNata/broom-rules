@@ -30,18 +30,6 @@ export const SignUpForm = ({ onFormSubmit }: Props) => {
 		})
 	}
 
-	if (error) {
-		return (
-			<Typography
-				as={'p'}
-				variant={'regular_text_14'}
-				className={'font-light text-danger-500'}
-			>
-				{error.message}
-			</Typography>
-		)
-	}
-
 	return (
 		<>
 			<form onSubmit={handleSubmit(onSubmit)} noValidate className='group'>
@@ -99,6 +87,15 @@ export const SignUpForm = ({ onFormSubmit }: Props) => {
 						{isPending ? 'Submitting...' : 'Sign up'}
 					</Button>
 				</fieldset>
+				{error && (
+					<Typography
+						as={'p'}
+						variant={'h3'}
+						className={'py-4 text-center text-danger-500'}
+					>
+						{error.message}
+					</Typography>
+				)}
 			</form>
 			<DevTool control={control} />
 		</>

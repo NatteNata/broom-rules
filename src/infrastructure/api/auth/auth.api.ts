@@ -12,9 +12,9 @@ import type {
 	RegistrationConfirmationArgs,
 	UpdateTokensResponse,
 } from '@infrastructure/api'
-import ky from 'ky'
+import { baseApi } from '@infrastructure/api'
 
-const authApi = ky.create({
+const authApi = baseApi.extend({
 	prefixUrl: `${process.env.NEXT_PUBLIC_API_URL}api/v1/auth`,
 })
 
@@ -47,7 +47,7 @@ export const passwordRecoveryResend = async (
 }
 
 export const registerUser = async (json: RegistrationArgs) => {
-	await authApi.post<AuthResponse>('registration', { json }).json()
+	await authApi.post('registration', { json }).json()
 }
 
 export const registrationConfirmation = async (
