@@ -23,7 +23,8 @@
 			"@app/*": ["./src/app/*"],
 			"@components": ["./src/app/ui/components/index.ts"],
 			"@utils": ["./src/use-cases/utils/index.ts"],
-			"@use-cases/*": ["./src/use-cases/*"],
+			"@use-cases": ["./src/use-cases/index.ts"],
+			"@entities/*": ["./src/entities/*"],
 			"@infrastructure/*": ["./src/infrastructure/*"]
 		},
 		"target": "ES2017"

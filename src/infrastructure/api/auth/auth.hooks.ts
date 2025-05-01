@@ -5,7 +5,7 @@ import {
 	newPassword,
 	passwordRecovery,
 	passwordRecoveryResend,
-	registration,
+	registerUser,
 	registrationConfirmation,
 	updateTokens,
 } from '@infrastructure/api'
@@ -46,9 +46,9 @@ export const usePasswordRecoveryResend = (args: PasswordRecoveryResendArgs) =>
 		mutationFn: passwordRecoveryResend,
 	})
 
-export const useRegistration = () =>
+export const useRegisterUserMutation = () =>
 	useMutation({
-		mutationFn: registration,
+		mutationFn: registerUser,
 	})
 
 export const useRegistrationConfirmation = () =>

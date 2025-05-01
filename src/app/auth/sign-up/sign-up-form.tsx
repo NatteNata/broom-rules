@@ -1,15 +1,12 @@
 'use client'
 
 import { FormCheckbox } from '@components'
+import type { RegisterUser } from '@entities/user'
 import { DevTool } from '@hookform/devtools'
-import { zodResolver } from '@hookform/resolvers/zod'
+
+import { useRegisterUser } from '@use-cases'
 import { Button, Input, Typography } from 'penguin-ui'
-import { type SubmitHandler, useForm } from 'react-hook-form'
-
-import { useRegistration } from '@infrastructure/api'
-import { type SignUpFormData, signUpSchema } from '@infrastructure/validators'
-import { cn } from '@utils'
-
+import type { SubmitHandler } from 'react-hook-form'
 import { SignUpTerms } from './sign-up-terms'
 
 type Props = {
@@ -17,49 +14,50 @@ type Props = {
 }
 
 export const SignUpForm = ({ onFormSubmit }: Props) => {
-	const form = useForm<SignUpFormData>({
-		resolver: zodResolver(signUpSchema),
-		mode: 'onBlur',
-	})
+	const { form, registerUser, isPending, error } = useRegisterUser()
 
 	const {
-		control,
-		formState: { errors },
 		handleSubmit,
 		register,
+		control,
+		formState: { isValid, errors },
 	} = form
 
-	const { mutate: registerUser, isPending } = useRegistration()
-
-	const onSubmit: SubmitHandler<SignUpFormData> = data => {
-		const { legal, ...restData } = data
-		registerUser(restData, {
+	const onSubmit: SubmitHandler<RegisterUser> = data => {
+		const { agreeToTerms, passwordConfirm, ...requestArgs } = data
+		registerUser(requestArgs, {
 			onSuccess: () => onFormSubmit(data.email),
-			onError: error => {
-				return <h1>{error.message}</h1>
-			},
 		})
+	}
+
+	if (error) {
+		return (
+			<Typography
+				as={'p'}
+				variant={'regular_text_14'}
+				className={'font-light text-danger-500'}
+			>
+				{error.message}
+			</Typography>
+		)
 	}
 
 	return (
 		<>
 			<form onSubmit={handleSubmit(onSubmit)} noValidate className='group'>
-				<fieldset
-					disabled={isPending}
-					className='group-disabled:pointer-events-none group-disabled:opacity-80'
-				>
+				<fieldset disabled={isPending} className='group-disabled:opacity-80'>
 					<Input
 						label={'Username'}
 						placeholder={'Epam11'}
 						{...register('userName')}
-						aria-invalid={!!errors?.userName}
+						hasError={!!errors?.userName}
 						helperMessage={errors?.userName?.message}
 					/>
 					<Input
 						label={'Email'}
 						placeholder={'Epam@epam.com'}
 						{...register('email')}
-						aria-invalid={!!errors?.email}
+						hasError={!!errors?.email}
 						helperMessage={errors?.email?.message}
 					/>
 					<Input
@@ -67,37 +65,38 @@ export const SignUpForm = ({ onFormSubmit }: Props) => {
 						placeholder={'Somecool345&^password'}
 						type={'password'}
 						{...register('password')}
-						aria-invalid={!!errors?.password}
+						hasError={!!errors?.password}
 						helperMessage={errors?.password?.message}
 					/>
 					<Input
 						label={'Confirm password'}
 						{...register('passwordConfirm')}
-						aria-invalid={!!errors?.passwordConfirm}
-						helperMessage={errors?.passwordConfirm?.message}
 						type={'password'}
+						hasError={!!errors?.passwordConfirm}
+						helperMessage={errors?.passwordConfirm?.message}
 					/>
 					<FormCheckbox
-						aria-invalid={!!errors?.legal}
-						control={control}
 						label={<SignUpTerms />}
-						name={'legal'}
+						name='agreeToTerms'
+						control={control}
+						hasError={!!errors?.agreeToTerms}
 					/>
-					{errors?.legal && (
+					{!!errors?.agreeToTerms && (
 						<Typography
-							asElement={'span'}
-							className={cn('block text-danger-500 text-sm')}
+							asElement='span'
+							className='block text-danger-500 text-sm'
 						>
-							{errors.legal.message}
+							{errors.agreeToTerms.message}
 						</Typography>
 					)}
 					<Button
-						className={'mt-3 mb-4'}
+						className={'mt-3 mb-4 disabled:cursor-not-allowed'}
 						fullWidth
 						type={'submit'}
 						variant={'primary'}
+						disabled={isPending || !isValid}
 					>
-						Sign up
+						{isPending ? 'Submitting...' : 'Sign up'}
 					</Button>
 				</fieldset>
 			</form>

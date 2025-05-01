@@ -46,7 +46,7 @@ export const passwordRecoveryResend = async (
 	await authApi.post('password-recovery-resending', { json }).json()
 }
 
-export const registration = async (json: RegistrationArgs) => {
+export const registerUser = async (json: RegistrationArgs) => {
 	await authApi.post<AuthResponse>('registration', { json }).json()
 }
 

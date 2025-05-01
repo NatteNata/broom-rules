@@ -1,8 +1,9 @@
-export type RegistrationArgs = {
-	email: string
-	password: string
-	userName: string
-}
+import type { RegisterUser } from '@entities/user'
+
+export type RegistrationArgs = Omit<
+	RegisterUser,
+	'agreeToTerms' | 'passwordConfirm'
+>
 
 export type AuthResponse = {
 	error: string

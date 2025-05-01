@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, IconArrowBackOutline } from '../penguin-ui'
+import { Button, IconArrowBackOutline } from 'penguin-ui'
 
 import { Link, Wrapper } from '@components'
 import { cn } from '@utils'
