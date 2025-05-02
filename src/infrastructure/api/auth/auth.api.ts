@@ -1,22 +1,38 @@
 import type {
-	AuthResponse,
 	EmailResendArgs,
 	LoginArgs,
 	LoginResponse,
 	NewPasswordArgs,
-	PasswordRecoveryArgs,
 	PasswordRecoveryResendArgs,
+	RecoverPasswordArgs,
 	RecoveryCodeArgs,
 	RecoveryCodeResponse,
 	RegistrationArgs,
 	RegistrationConfirmationArgs,
-	UpdateTokensResponse,
+	ServerError,
 } from '@infrastructure/api'
-import { baseApi } from '@infrastructure/api'
+
+import { baseApi } from '../base.api'
 
 const authApi = baseApi.extend({
 	prefixUrl: `${process.env.NEXT_PUBLIC_API_URL}api/v1/auth`,
 })
+
+export const registerUser = async (json: RegistrationArgs) => {
+	await authApi.post('registration', { json }).json()
+}
+
+export const loginUser = async (json: LoginArgs) => {
+	return await authApi.post<LoginResponse>('login', { json }).json()
+}
+
+export const recoverPassword = async (json: RecoverPasswordArgs) => {
+	await authApi.post('password-recovery', { json }).json()
+}
+
+export const logout = async () => {
+	await authApi.post('logout', {}).json()
+}
 
 export const checkRecoveryCode = async (json: RecoveryCodeArgs) => {
 	await authApi
@@ -24,50 +40,26 @@ export const checkRecoveryCode = async (json: RecoveryCodeArgs) => {
 		.json()
 }
 
-export const login = async (json: LoginArgs) => {
-	await authApi.post<LoginResponse>('login', { json }).json()
-}
-
-export const logout = async () => {
-	await authApi.post('logout', {}).json()
-}
-
-export const newPassword = async (json: NewPasswordArgs) => {
+export const createNewPassword = async (json: NewPasswordArgs) => {
 	await authApi.post('new-password', { json }).json()
 }
 
-export const passwordRecovery = async (json: PasswordRecoveryArgs) => {
-	await authApi.post('password-recovery', { json }).json()
-}
-
-export const passwordRecoveryResend = async (
+export const resendPasswordRecovery = async (
 	json: PasswordRecoveryResendArgs,
 ) => {
 	await authApi.post('password-recovery-resending', { json }).json()
 }
 
-export const registerUser = async (json: RegistrationArgs) => {
-	await authApi.post('registration', { json }).json()
+export const resendRegistrationEmail = async (json: EmailResendArgs) => {
+	await authApi.post('registration-email-resending', { json }).json()
 }
 
 export const registrationConfirmation = async (
 	json: RegistrationConfirmationArgs,
 ) => {
 	await authApi
-		.post<AuthResponse>('registration-confirmation', {
+		.post<ServerError>('registration-confirmation', {
 			json,
 		})
 		.json()
-}
-
-export const emailResend = async (json: EmailResendArgs) => {
-	await authApi
-		.post<AuthResponse>('registration-email-resending', {
-			json,
-		})
-		.json()
-}
-
-export const updateTokens = async () => {
-	await authApi.post<UpdateTokensResponse>('update-tokens', {}).json()
 }

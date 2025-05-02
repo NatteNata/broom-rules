@@ -1,11 +1,20 @@
-import type { RegisterUser } from '@entities/user'
+import type { Auth } from '@entities/auth'
+import type { LoginUser, RegisterUser } from '@entities/user'
 
 export type RegistrationArgs = Omit<
 	RegisterUser,
 	'agreeToTerms' | 'passwordConfirm'
 >
 
-export type AuthResponse = {
+export type LoginArgs = LoginUser
+
+export type LoginResponse = Pick<Auth, 'accessToken'>
+
+export type UpdateTokenResponse = Pick<Auth, 'accessToken'>
+
+export type RecoverPasswordArgs = Pick<Auth, 'email' | 'recaptcha'>
+
+export type ServerError = {
 	error: string
 	messages: [
 		{
@@ -24,16 +33,7 @@ export type EmailResendArgs = {
 	email: string
 }
 
-export type UpdateTokensResponse = {
-	accessToken: string
-}
-
-export type PasswordRecoveryArgs = {
-	email: string
-	recaptcha: string
-}
-
-export type PasswordRecoveryResendArgs = Pick<PasswordRecoveryArgs, 'email'>
+export type PasswordRecoveryResendArgs = Pick<RecoverPasswordArgs, 'email'>
 
 export type NewPasswordArgs = {
 	newPassword: string
@@ -47,12 +47,3 @@ export type RecoveryCodeArgs = {
 export type RecoveryCodeResponse = {
 	email: string
 }
-
-export type LoginArgs = {
-	email: string
-	password: string
-}
-
-export type LoginResponse = {
-	accessToken: string
-} & AuthResponse

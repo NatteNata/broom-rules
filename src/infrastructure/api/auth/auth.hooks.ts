@@ -1,49 +1,21 @@
 import {
-	emailResend,
-	login,
+	createNewPassword,
+	loginUser,
 	logout,
-	newPassword,
-	passwordRecovery,
-	passwordRecoveryResend,
+	recoverPassword,
 	registerUser,
 	registrationConfirmation,
-	updateTokens,
-} from '@infrastructure/api'
-import type {
-	EmailResendArgs,
-	PasswordRecoveryResendArgs,
+	resendPasswordRecovery,
+	resendRegistrationEmail,
 } from '@infrastructure/api'
 import { useMutation } from '@tanstack/react-query'
 
-export const useLogin = () =>
+export const useLoginMutation = () =>
 	useMutation({
-		mutationFn: login,
+		mutationFn: loginUser,
 		onSuccess: data => {
-			sessionStorage.set('accessToken', data)
+			sessionStorage.setItem('access_token', JSON.stringify(data))
 		},
-	})
-
-export const useLogout = () =>
-	useMutation({
-		mutationFn: logout,
-		onSuccess: () => {
-			sessionStorage.remove('accessToken')
-		},
-	})
-
-export const useNewPassword = () =>
-	useMutation({
-		mutationFn: newPassword,
-	})
-
-export const usePasswordRecovery = () =>
-	useMutation({
-		mutationFn: passwordRecovery,
-	})
-
-export const usePasswordRecoveryResend = (args: PasswordRecoveryResendArgs) =>
-	useMutation({
-		mutationFn: passwordRecoveryResend,
 	})
 
 export const useRegisterUserMutation = () =>
@@ -51,17 +23,35 @@ export const useRegisterUserMutation = () =>
 		mutationFn: registerUser,
 	})
 
+export const useLogout = () =>
+	useMutation({
+		mutationFn: logout,
+		onSuccess: () => {
+			sessionStorage.remove('access_token')
+		},
+	})
+
+export const useNewPassword = () =>
+	useMutation({
+		mutationFn: createNewPassword,
+	})
+
+export const useRecoverPasswordMutation = () =>
+	useMutation({
+		mutationFn: recoverPassword,
+	})
+
+export const useResendPasswordRecoveryMutation = () =>
+	useMutation({
+		mutationFn: resendPasswordRecovery,
+	})
+
 export const useRegistrationConfirmation = () =>
 	useMutation({
 		mutationFn: registrationConfirmation,
 	})
 
-export const useEmailResent = (args: EmailResendArgs) =>
+export const useResendExpiredLinkMutation = () =>
 	useMutation({
-		mutationFn: emailResend,
-	})
-
-export const useUpdateTokens = () =>
-	useMutation({
-		mutationFn: updateTokens,
+		mutationFn: resendRegistrationEmail,
 	})
