@@ -10,7 +10,7 @@ export function useRegisterUser() {
 		mode: 'onBlur',
 		defaultValues: {
 			userName: 'Cranberry',
-			email: 'natte.noshimo@google.com',
+			email: 'natte@ya.ru',
 			password: 'Bramley11*',
 			passwordConfirm: 'Bramley11*',
 			agreeToTerms: true,

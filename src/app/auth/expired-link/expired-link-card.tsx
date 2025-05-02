@@ -1,10 +1,22 @@
+'use client'
+
+import { SentEmailModal } from '@app/ui/components/modals/sent-email-modal'
+import { useSearchParams } from 'next/navigation'
 import { Typography } from 'penguin-ui'
 
 import { TimeManagementRafiki, Wrapper } from '@components'
+import { useState } from 'react'
 
 import { ExpiredLinkForm } from './expired-link-form'
 
 export const ExpiredLinkCard = () => {
+	const [showModal, setShowModal] = useState(false)
+	const { email } = Object.fromEntries(useSearchParams())
+
+	const onFormSubmit = () => {
+		setShowModal(true)
+	}
+
 	return (
 		<Wrapper className='m-0 flex-col'>
 			<div className='max-w-76'>
@@ -18,16 +30,21 @@ export const ExpiredLinkCard = () => {
 				<Typography
 					variant='regular_text_14'
 					asElement='p'
-					className='mb-14 text-center text-light-100'
+					className='mb-8 text-center text-light-100'
 				>
 					Looks like the verification link has expired. Not to worry, we can
 					send the link again.
 				</Typography>
 			</div>
-			<ExpiredLinkForm />
+			<ExpiredLinkForm onFormSubmit={onFormSubmit} />
 			<div className='mt-16'>
 				<TimeManagementRafiki />
 			</div>
+			<SentEmailModal
+				showModal={showModal}
+				email={email}
+				setShowModal={setShowModal}
+			/>
 		</Wrapper>
 	)
 }

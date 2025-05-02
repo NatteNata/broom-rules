@@ -1,5 +1,3 @@
-'use client'
-
 import { Card, Typography } from 'penguin-ui'
 
 import { cn } from '@utils'

@@ -1,20 +1,59 @@
-'use client'
+import type { ResendEmail } from '@entities/auth'
+import { DevTool } from '@hookform/devtools'
+import { Button, Input, Typography } from 'penguin-ui'
+import type { SubmitHandler } from 'react-hook-form'
+import { useResendEmail } from 'src/use-cases/auth/use-resend-expired-link'
 
-import { Button, Input } from 'penguin-ui'
+type Props = {
+	onFormSubmit: () => void
+}
 
-export const ExpiredLinkForm = () => {
+export const ExpiredLinkForm = ({ onFormSubmit }: Props) => {
+	const { form, resendRegistrationEmail, isPending, error, isSuccess } =
+		useResendEmail()
+
+	const {
+		register,
+		handleSubmit,
+		control,
+		formState: { errors },
+	} = form
+
+	const onSubmit: SubmitHandler<ResendEmail> = data => {
+		resendRegistrationEmail({ email: data.email })
+	}
+
+	if (isSuccess) {
+		onFormSubmit()
+	}
+
 	return (
-		<form action=''>
-			<Input
-				type='email'
-				name='email'
-				placeholder='Epam@epam.com'
-				label='Email'
-			/>
-
-			<Button variant='primary' className='mb-2 px-12' type='submit'>
-				Resend verification link
-			</Button>
-		</form>
+		<>
+			<form onSubmit={handleSubmit(onSubmit)} noValidate className='group'>
+				<fieldset disabled={isPending} className={'group-disabled:opacity-80'}>
+					<Input
+						type='email'
+						{...register('email')}
+						placeholder='Epam@epam.com'
+						label='Email'
+						hasError={!!errors?.email}
+						helperMessage={errors?.email?.message}
+					/>
+					<Button variant='primary' className='mb-2 px-12' type='submit'>
+						Resend verification link
+					</Button>
+				</fieldset>
+			</form>
+			{error && (
+				<Typography
+					as={'p'}
+					variant={'h3'}
+					className={'py-4 text-center text-danger-500'}
+				>
+					{error.message}
+				</Typography>
+			)}
+			<DevTool control={control} />
+		</>
 	)
 }

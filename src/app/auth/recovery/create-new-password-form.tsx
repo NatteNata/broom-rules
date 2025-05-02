@@ -1,6 +1,5 @@
 'use client'
 
-import { Link } from '@components'
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useNewPassword } from '@infrastructure/api'
@@ -8,20 +7,21 @@ import {
 	type NewPasswordFormData,
 	newPasswordSchema,
 } from '@infrastructure/validators'
-import { redirect, useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
-import { Button, Input } from 'penguin-ui'
+import { Button, Input, Typography } from 'penguin-ui'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 
 export const CreateNewPasswordForm = () => {
 	const { code } = Object.fromEntries(useSearchParams())
+	const router = useRouter()
 
 	const form = useForm<NewPasswordFormData>({
 		resolver: zodResolver(newPasswordSchema),
 		mode: 'onBlur',
 	})
 
-	const { mutate: createNewPassword, isPending } = useNewPassword()
+	const { mutate: createNewPassword, isPending, isSuccess } = useNewPassword()
 
 	const {
 		register,
@@ -35,7 +35,10 @@ export const CreateNewPasswordForm = () => {
 			newPassword: data.newpass,
 			recoveryCode: code,
 		})
-		redirect('/auth/sign-in')
+	}
+
+	if (isSuccess) {
+		router.push('/auth/sign-in')
 	}
 
 	return (
@@ -64,9 +67,13 @@ export const CreateNewPasswordForm = () => {
 						helperMessage={errors?.confirmpass?.message}
 					/>
 					<div className={'flex justify-end'}>
-						<Link className={'mt-2'} href={'/forgot-password'}>
+						<Typography
+							className={'mt-2 font-light'}
+							as={'span'}
+							variant={'regular_text_14'}
+						>
 							Your password must be between 6 and 20 characters
-						</Link>
+						</Typography>
 					</div>
 					<Button
 						className={'mt-6 mb-5'}

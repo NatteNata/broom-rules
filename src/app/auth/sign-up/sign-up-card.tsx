@@ -6,8 +6,8 @@ import { useState } from 'react'
 import { Link } from '@components'
 import { cn } from '@utils'
 
+import { SentEmailModal } from '@app/ui/components/modals/sent-email-modal'
 import { SignUpForm } from './sign-up-form'
-import { SignUpModal } from './sign-up-modal'
 
 export const SignUpCard = () => {
 	const [showModal, setShowModal] = useState(false)
@@ -33,10 +33,10 @@ export const SignUpCard = () => {
 					Do you have an account?
 				</Typography>
 				<Button asChild className={'mt-1.5'} variant={'ghost'}>
-					<Link href={'/sign-in'}>Sign in</Link>
+					<Link href={'/auth/sign-in'}>Sign in</Link>
 				</Button>
 			</Card>
-			<SignUpModal
+			<SentEmailModal
 				showModal={showModal}
 				email={email}
 				setShowModal={setShowModal}

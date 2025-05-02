@@ -1,47 +1,37 @@
 'use client'
 
+import { Link } from '@components'
+import type { RecoverPassword } from '@entities/user'
 import { DevTool } from '@hookform/devtools'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { Button, Input, Typography } from 'penguin-ui'
-import { useState } from 'react'
-import { type SubmitHandler, useForm } from 'react-hook-form'
+import { useEffect, useState } from 'react'
+import type { SubmitHandler } from 'react-hook-form'
+import { useRecoverPassword } from 'src/use-cases/auth/use-recover-password'
 
-import { usePasswordRecovery } from '@infrastructure/api'
-import {
-	type ForgotPasswordFormData,
-	forgotPasswordSchema,
-} from '@infrastructure/validators'
+type Props = {
+	token: string
+}
 
-export const ForgotPasswordForm = ({
-	submitDisable,
-	token,
-}: { token: string; submitDisable: boolean }) => {
-	const [needResend, setNeedResend] = useState(false)
-	const { mutate: recoverPassword, isPending } = usePasswordRecovery()
+export const ForgotPasswordForm = ({ token }: Props) => {
+	const [showMore, setShowMore] = useState(false)
+	const { form, recoverPassword, error, isPending, isSuccess } =
+		useRecoverPassword()
 
-	const form = useForm<ForgotPasswordFormData>({
-		resolver: zodResolver(forgotPasswordSchema),
-		mode: 'onBlur',
-	})
 	const {
 		register,
 		handleSubmit,
 		control,
-		formState: { errors },
+		formState: { isValid, errors },
 	} = form
 
-	const buttonText = needResend ? 'Send Link Again' : 'Send Link'
-
-	const onSubmit: SubmitHandler<ForgotPasswordFormData> = data => {
-		recoverPassword(
-			{ email: data.email, recaptcha: token },
-			{
-				onSuccess: () => {
-					setNeedResend(true)
-				},
-			},
-		)
+	const onSubmit: SubmitHandler<RecoverPassword> = data => {
+		recoverPassword({ email: data.email, recaptcha: token })
 	}
+
+	if (isSuccess) {
+		setShowMore(true)
+	}
+
 	return (
 		<>
 			<form onSubmit={handleSubmit(onSubmit)} className='group' noValidate>
@@ -67,29 +57,60 @@ export const ForgotPasswordForm = ({
 							instructions.
 						</Typography>
 					</div>
-					<div>
-						{needResend && (
-							<Typography
-								as={'p'}
-								variant={'regular_text-14 text-light-100 font-light'}
-							>
-								The link has been sent by email. If you don’t receive an email
-								send link again.
-							</Typography>
-						)}
-					</div>
-					<Button
-						type='submit'
-						className={
-							'mt-6 mb-5 disabled:pointer-events-none disabled:text-light-100 disabled:opacity-80'
-						}
-						fullWidth
-						variant={'primary'}
-						disabled={submitDisable}
-					>
-						{buttonText}
-					</Button>
+
+					{showMore && (
+						<>
+							<div>
+								<Typography
+									as={'p'}
+									variant={'regular_text-14 text-light-100 font-light'}
+								>
+									The link has been sent by email. If you don’t receive an email
+									send link again.
+								</Typography>
+							</div>
+							<div>
+								<Button
+									type='submit'
+									className={
+										'mt-6 mb-5 disabled:pointer-events-none disabled:text-light-100 disabled:opacity-80'
+									}
+									fullWidth
+									variant={'primary'}
+									asChild
+									disabled={!isValid || !token}
+								>
+									<Link href={'/auth/resend-password-recovery'}>
+										Send Link Again
+									</Link>
+								</Button>
+							</div>
+						</>
+					)}
+
+					{!showMore && (
+						<Button
+							type='submit'
+							className={
+								'mt-6 mb-5 disabled:pointer-events-none disabled:text-light-100 disabled:opacity-80'
+							}
+							fullWidth
+							variant={'primary'}
+							disabled={!isValid || !token}
+						>
+							Send Link
+						</Button>
+					)}
 				</fieldset>
+				{error && (
+					<Typography
+						as={'p'}
+						variant={'h3'}
+						className={'py-4 text-center text-danger-500'}
+					>
+						{error.message}
+					</Typography>
+				)}
 			</form>
 			<DevTool control={control} />
 		</>

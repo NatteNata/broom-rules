@@ -1,16 +1,11 @@
 'use client'
 
 import { Link } from '@components'
-import { Recapcha } from '@infrastructure/recapcha'
 import { cn } from '@utils'
 import { Button, Card, Typography } from 'penguin-ui'
-import { useState } from 'react'
+import { ResendPasswordRecoveryForm } from './resend-password-recovery-form'
 
-import { ForgotPasswordForm } from './forgot-password-form'
-
-export const ForgotPasswordCard = () => {
-	const [token, setToken] = useState('')
-
+export const ResendPasswordRecoveryCard = () => {
 	return (
 		<Card
 			className={cn(
@@ -18,15 +13,12 @@ export const ForgotPasswordCard = () => {
 			)}
 		>
 			<Typography asElement={'h2'} variant={'h1'}>
-				Forgot Password
+				Resend Link
 			</Typography>
-			<ForgotPasswordForm token={token} />
+			<ResendPasswordRecoveryForm />
 			<Button asChild fullWidth variant={'ghost'}>
 				<Link href={'/auth/sign-in'}>Back to Sign In</Link>
 			</Button>
-			<div className={'w-full py-8 [&>div]:w-full'}>
-				<Recapcha returnToken={setToken} />
-			</div>
 		</Card>
 	)
 }

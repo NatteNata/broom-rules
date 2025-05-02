@@ -6,7 +6,7 @@ type Props = {
 	email: string
 }
 
-export const SignUpModal = ({ showModal, email, setShowModal }: Props) => {
+export const SentEmailModal = ({ showModal, email, setShowModal }: Props) => {
 	if (!showModal) {
 		return null
 	}
