@@ -21,7 +21,7 @@ export const CreateNewPasswordForm = () => {
 		mode: 'onBlur',
 	})
 
-	const { mutate: createNewPassword, isPending, isSuccess } = useNewPassword()
+	const { mutate: createNewPassword, isPending, error } = useNewPassword()
 
 	const {
 		register,
@@ -31,14 +31,15 @@ export const CreateNewPasswordForm = () => {
 	} = form
 
 	const onSubmit: SubmitHandler<NewPasswordFormData> = data => {
-		createNewPassword({
-			newPassword: data.newpass,
-			recoveryCode: code,
-		})
-	}
-
-	if (isSuccess) {
-		router.push('/auth/sign-in')
+		createNewPassword(
+			{
+				newPassword: data.newpass,
+				recoveryCode: code,
+			},
+			{
+				onSuccess: () => router.push('/auth/login'),
+			},
+		)
 	}
 
 	return (
@@ -85,6 +86,15 @@ export const CreateNewPasswordForm = () => {
 					</Button>
 				</fieldset>
 			</form>
+			{error && (
+				<Typography
+					as={'p'}
+					variant={'h3'}
+					className={'py-4 text-center text-danger-500'}
+				>
+					{error.message}
+				</Typography>
+			)}
 			<DevTool control={control} />
 		</>
 	)

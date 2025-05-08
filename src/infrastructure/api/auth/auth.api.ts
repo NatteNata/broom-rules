@@ -2,6 +2,7 @@ import type {
 	EmailResendArgs,
 	LoginArgs,
 	LoginResponse,
+	MeResponse,
 	NewPasswordArgs,
 	PasswordRecoveryResendArgs,
 	RecoverPasswordArgs,
@@ -57,9 +58,9 @@ export const resendRegistrationEmail = async (json: EmailResendArgs) => {
 export const registrationConfirmation = async (
 	json: RegistrationConfirmationArgs,
 ) => {
-	await authApi
-		.post<ServerError>('registration-confirmation', {
-			json,
-		})
-		.json()
+	await authApi.post('registration-confirmation', { json }).json()
+}
+
+export const getMe = async () => {
+	return await authApi.get<MeResponse>('me').json()
 }

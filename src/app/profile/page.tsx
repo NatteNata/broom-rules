@@ -1,4 +1,7 @@
-import { redirect } from 'next/navigation'
+'use client'
+
+import { useMeQuery } from '@infrastructure/api'
+import { useRouter } from 'next/navigation'
 
 type Props = {
 	params: {
@@ -7,13 +10,11 @@ type Props = {
 }
 
 export default function ProfileRedirect({ params }: Props) {
-	const { userId } = params
+	const router = useRouter()
+	const { data: currentUser, isLoading, error } = useMeQuery()
 
-	const userAuthorized = true
+	if (error) return <h2>Unable to get user. {error.message}</h2>
+	if (isLoading) return <h2>Loading...</h2>
 
-	if (!userAuthorized) {
-		redirect('/')
-	} else {
-		redirect(`/profile/${userId}`)
-	}
+	router.push(`/profile/${currentUser?.userId}`)
 }

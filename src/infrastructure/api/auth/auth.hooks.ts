@@ -1,5 +1,6 @@
 import {
 	createNewPassword,
+	getMe,
 	loginUser,
 	logout,
 	recoverPassword,
@@ -8,13 +9,13 @@ import {
 	resendPasswordRecovery,
 	resendRegistrationEmail,
 } from '@infrastructure/api'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 
 export const useLoginMutation = () =>
 	useMutation({
 		mutationFn: loginUser,
 		onSuccess: data => {
-			sessionStorage.setItem('access_token', JSON.stringify(data))
+			sessionStorage.setItem('access_token', data.accessToken)
 		},
 	})
 
@@ -23,11 +24,11 @@ export const useRegisterUserMutation = () =>
 		mutationFn: registerUser,
 	})
 
-export const useLogout = () =>
+export const useLogoutMutation = () =>
 	useMutation({
 		mutationFn: logout,
 		onSuccess: () => {
-			sessionStorage.remove('access_token')
+			sessionStorage.removeItem('access_token')
 		},
 	})
 
@@ -46,7 +47,7 @@ export const useResendPasswordRecoveryMutation = () =>
 		mutationFn: resendPasswordRecovery,
 	})
 
-export const useRegistrationConfirmation = () =>
+export const useRegistrationConfirmationMutation = () =>
 	useMutation({
 		mutationFn: registrationConfirmation,
 	})
@@ -55,3 +56,10 @@ export const useResendExpiredLinkMutation = () =>
 	useMutation({
 		mutationFn: resendRegistrationEmail,
 	})
+
+export const useMeQuery = () => {
+	return useQuery({
+		queryKey: ['me'],
+		queryFn: getMe,
+	})
+}

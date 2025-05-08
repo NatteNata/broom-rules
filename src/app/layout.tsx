@@ -1,18 +1,20 @@
 import '@app/globals.css'
 import 'penguin-ui/styles.css'
 
+import { AppHeader } from '@components'
+import type { User } from '@entities/user'
+import { TanstackProvider } from '@infrastructure/providers'
+import { AuthProvider } from '@infrastructure/providers/auth-provider'
+
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
-
-import { AppHeader, Container } from '@components'
-import { TanstackProvider } from '@infrastructure/providers'
 
 export const metadata: Metadata = {
 	description: 'For link better world',
 	title: 'Tornata | Be the change',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: ReactNode
@@ -21,8 +23,10 @@ export default function RootLayout({
 		<html lang={'en'}>
 			<body>
 				<TanstackProvider>
-					<AppHeader />
-					<Container as='main'>{children}</Container>
+					<AuthProvider>
+						<AppHeader />
+						<main>{children}</main>
+					</AuthProvider>
 				</TanstackProvider>
 			</body>
 		</html>

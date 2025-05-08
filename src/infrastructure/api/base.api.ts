@@ -32,12 +32,13 @@ export const baseApi = ky.create({
 		beforeRetry: [
 			async () => {
 				try {
-					const accessToken = await ky
+					const data = await ky
 						.post<UpdateTokenResponse>(
 							`${process.env.NEXT_PUBLIC_API_URL}api/v1/auth/update-tokens`,
 						)
 						.json()
-					sessionStorage.setItem('access_token', JSON.stringify(accessToken))
+
+					sessionStorage.setItem('access_token', data.accessToken)
 				} catch (error) {
 					console.log('Failed to update access token', error)
 				}

@@ -1,4 +1,4 @@
-import { Sidebar } from 'lucide-react'
+import { Container, Sidebar } from '@components'
 import type React from 'react'
 
 export default function Layout({
@@ -7,11 +7,9 @@ export default function Layout({
 	children: React.ReactNode
 }>) {
 	return (
-		<>
-			<div className='flex'>
-				<Sidebar />
-				{children}
-			</div>
-		</>
+		<Container className='flex p-0'>
+			<Sidebar />
+			<Container as='section'>{children}</Container>
+		</Container>
 	)
 }

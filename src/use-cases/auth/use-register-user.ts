@@ -8,13 +8,13 @@ export function useRegisterUser() {
 	const form = useForm<RegisterUser>({
 		resolver: zodResolver(registerUserSchema),
 		mode: 'onBlur',
-		defaultValues: {
+		/*		defaultValues: {
 			userName: 'Cranberry',
 			email: 'natte@ya.ru',
 			password: 'Bramley11*',
 			passwordConfirm: 'Bramley11*',
 			agreeToTerms: true,
-		},
+		},*/
 	})
 
 	const { mutate: registerUser, error, isPending } = useRegisterUserMutation()

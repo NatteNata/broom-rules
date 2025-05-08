@@ -26,9 +26,6 @@ export const ForgotPasswordForm = ({ token }: Props) => {
 
 	const onSubmit: SubmitHandler<RecoverPassword> = data => {
 		recoverPassword({ email: data.email, recaptcha: token })
-	}
-
-	if (isSuccess) {
 		setShowMore(true)
 	}
 

@@ -1,12 +1,15 @@
+'use client'
+
 import { DialogA } from 'penguin-ui'
 
 type Props = {
 	showModal: boolean
-	setShowModal: (showModal: boolean) => void
+	setShowModal: string
 	email: string
 }
 
 export const SentEmailModal = ({ showModal, email, setShowModal }: Props) => {
+	const foo = JSON.parse(setShowModal)
 	if (!showModal) {
 		return null
 	}
@@ -17,7 +20,7 @@ export const SentEmailModal = ({ showModal, email, setShowModal }: Props) => {
 			open={showModal}
 			description={`We have sent a link to confirm your email to ${email}.`}
 			closeButtonTitle='OK'
-			onOpenChange={setShowModal}
+			onOpenChange={prev => foo(!prev)}
 		/>
 	)
 }

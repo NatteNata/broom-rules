@@ -10,10 +10,11 @@ import type { SubmitHandler } from 'react-hook-form'
 import { SignUpTerms } from './sign-up-terms'
 
 type Props = {
-	onFormSubmit: (email: string) => void
+	onFormSubmit: string
 }
 
 export const SignUpForm = ({ onFormSubmit }: Props) => {
+	const foo = JSON.parse(onFormSubmit)
 	const { form, registerUser, isPending, error } = useRegisterUser()
 
 	const {
@@ -26,7 +27,7 @@ export const SignUpForm = ({ onFormSubmit }: Props) => {
 	const onSubmit: SubmitHandler<RegisterUser> = data => {
 		const { agreeToTerms, passwordConfirm, ...requestArgs } = data
 		registerUser(requestArgs, {
-			onSuccess: () => onFormSubmit(data.email),
+			onSuccess: () => foo(data.email),
 		})
 	}
 

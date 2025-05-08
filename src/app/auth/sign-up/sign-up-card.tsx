@@ -18,6 +18,9 @@ export const SignUpCard = () => {
 		setEmail(email)
 	}
 
+	const fooProp = JSON.stringify(setShowModal)
+	const fooProp2 = JSON.stringify(onFormSubmit)
+
 	return (
 		<>
 			<Card
@@ -28,7 +31,7 @@ export const SignUpCard = () => {
 				<Typography asElement={'h2'} variant={'h1'}>
 					Sign up
 				</Typography>
-				<SignUpForm onFormSubmit={onFormSubmit} />
+				<SignUpForm onFormSubmit={fooProp2} />
 				<Typography asElement={'span'} variant={'regular_text_16'}>
 					Do you have an account?
 				</Typography>
@@ -39,7 +42,7 @@ export const SignUpCard = () => {
 			<SentEmailModal
 				showModal={showModal}
 				email={email}
-				setShowModal={setShowModal}
+				setShowModal={fooProp}
 			/>
 		</>
 	)

@@ -5,12 +5,11 @@ import type { SubmitHandler } from 'react-hook-form'
 import { useResendEmail } from 'src/use-cases/auth/use-resend-expired-link'
 
 type Props = {
-	onFormSubmit: () => void
+	onFormSubmit: (email: string) => void
 }
 
 export const ExpiredLinkForm = ({ onFormSubmit }: Props) => {
-	const { form, resendRegistrationEmail, isPending, error, isSuccess } =
-		useResendEmail()
+	const { form, resendRegistrationEmail, isPending, error } = useResendEmail()
 
 	const {
 		register,
@@ -20,11 +19,12 @@ export const ExpiredLinkForm = ({ onFormSubmit }: Props) => {
 	} = form
 
 	const onSubmit: SubmitHandler<ResendEmail> = data => {
-		resendRegistrationEmail({ email: data.email })
-	}
-
-	if (isSuccess) {
-		onFormSubmit()
+		resendRegistrationEmail(
+			{ email: data.email },
+			{
+				onSuccess: () => onFormSubmit(data.email),
+			},
+		)
 	}
 
 	return (

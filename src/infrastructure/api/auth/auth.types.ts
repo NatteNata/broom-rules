@@ -1,5 +1,5 @@
 import type { Auth } from '@entities/auth'
-import type { LoginUser, RegisterUser } from '@entities/user'
+import type { LoginUser, RegisterUser, User } from '@entities/user'
 
 export type RegistrationArgs = Omit<
 	RegisterUser,
@@ -14,6 +14,14 @@ export type UpdateTokenResponse = Pick<Auth, 'accessToken'>
 
 export type RecoverPasswordArgs = Pick<Auth, 'email' | 'recaptcha'>
 
+export type MeResponse = Omit<User, 'password'> & {
+	isBlocked: boolean
+}
+
+export type RegistrationConfirmationArgs = {
+	confirmationCode: string
+}
+
 export type ServerError = {
 	error: string
 	messages: [
@@ -23,10 +31,6 @@ export type ServerError = {
 		},
 	]
 	statusCode: number
-}
-
-export type RegistrationConfirmationArgs = {
-	confirmationCode: string
 }
 
 export type EmailResendArgs = {

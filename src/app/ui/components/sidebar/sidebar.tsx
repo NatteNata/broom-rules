@@ -1,36 +1,131 @@
-import { Link } from '@app/ui/components'
-import { cn } from '@utils'
+'use client'
+
+import { useLogoutMutation } from '@infrastructure/api'
+import { useAuthContext } from '@infrastructure/providers/auth-provider'
+import Link from 'next/link'
+import {
+	IconBookmarkOutline,
+	IconHomeOutline,
+	IconLogOut,
+	IconMessageCircleOutline,
+	IconPersonOutline,
+	IconPlusSquareOutline,
+	IconSearch,
+	IconTrendingUp,
+	Sidebar as SidebarComp,
+	Typography,
+} from 'penguin-ui'
+import type { ReactNode } from 'react'
+
+type RouteLinks = {
+	label: string
+	href: string
+	id: string
+	icon: ReactNode
+}[]
+
+const publicRoutesLinks: RouteLinks = [
+	{
+		label: 'Feed',
+		href: '/profile',
+		id: 'feed',
+		icon: <IconHomeOutline />,
+	},
+	{
+		label: 'Create',
+		href: '/profile',
+		id: 'create',
+		icon: <IconPlusSquareOutline />,
+	},
+	{
+		label: 'My Profile',
+		href: '/profile',
+		id: 'profile',
+		icon: <IconPersonOutline />,
+	},
+	{
+		label: 'Messenger',
+		href: '/profile',
+		id: 'messenger',
+		icon: <IconMessageCircleOutline />,
+	},
+	{ label: 'Search', href: '/profile', id: 'search', icon: <IconSearch /> },
+]
+
+const privateRoutesLinks: RouteLinks = [
+	{
+		label: 'Statistics',
+		href: '/profile',
+		id: 'statistics',
+		icon: <IconTrendingUp />,
+	},
+	{
+		label: 'Favourites',
+		href: '/profile',
+		id: 'favourites',
+		icon: <IconBookmarkOutline />,
+	},
+]
 
 export function Sidebar() {
+	const { isAuthed } = useAuthContext()
+	const { mutate: logout, isPending, error } = useLogoutMutation()
+
+	const onClick = () => {
+		logout()
+	}
+
 	return (
-		<aside className={'flex w-56 flex-col items-center gap-2'}>
-			<nav
-				className={cn('mx-2 mt-4 flex w-full items-center justify-items-start')}
-			>
-				<ul className={'flex list-none flex-col gap-8'}>
-					<li>
-						<Link href={'/auth/sign-up'}>Sign up</Link>
-					</li>
-					<li>
-						<Link href={'/auth/sign-in'}>Sign in</Link>
-					</li>
-					<li>
-						<Link href={'/auth/forgot-password'}>Forgot password</Link>
-					</li>
-					<li>
-						<Link href={'/auth/create-new-password'}>Create new password</Link>
-					</li>
-					<li>
-						<Link href={'/auth/expired-link'}>Expired link</Link>
-					</li>
-					<li>
-						<Link href={'/auth/terms-of-service'}>Terms of Service</Link>
-					</li>
-					<li>
-						<Link href={'/auth/privacy-policy'}>Privacy Policy</Link>
-					</li>
-				</ul>
-			</nav>
-		</aside>
+		<SidebarComp.Root defaultActiveItem='feed'>
+			<SidebarComp.Menu>
+				<SidebarComp.Group>
+					{publicRoutesLinks.map(({ label, href, id, icon }) => {
+						return (
+							<SidebarComp.Item id={id} asChild key={id}>
+								<Link href={href}>
+									{icon}
+									<span>{label}</span>
+								</Link>
+							</SidebarComp.Item>
+						)
+					})}
+				</SidebarComp.Group>
+				{isAuthed && (
+					<SidebarComp.Group>
+						{privateRoutesLinks.map(({ label, href, id, icon }) => {
+							return (
+								<SidebarComp.Item id={id} asChild key={id}>
+									<Link href={href}>
+										{icon}
+										<span>{label}</span>
+									</Link>
+								</SidebarComp.Item>
+							)
+						})}
+					</SidebarComp.Group>
+				)}
+				<SidebarComp.Group className='pt-32'>
+					{isAuthed && (
+						<SidebarComp.Item
+							id='logout'
+							disabled={isPending}
+							onClick={onClick}
+						>
+							<IconLogOut />
+							<span>Log out</span>
+						</SidebarComp.Item>
+					)}
+					{error && (
+						<Typography
+							as={'p'}
+							variant={'h3'}
+							className={'py-4 text-center text-danger-500'}
+						>
+							{error.message}
+						</Typography>
+					)}
+				</SidebarComp.Group>
+			</SidebarComp.Menu>
+		</SidebarComp.Root>
 	)
 }

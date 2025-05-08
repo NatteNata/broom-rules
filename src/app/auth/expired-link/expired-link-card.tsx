@@ -1,21 +1,22 @@
 'use client'
 
 import { SentEmailModal } from '@app/ui/components/modals/sent-email-modal'
-import { useSearchParams } from 'next/navigation'
-import { Typography } from 'penguin-ui'
-
 import { TimeManagementRafiki, Wrapper } from '@components'
+import { Typography } from 'penguin-ui'
 import { useState } from 'react'
 
 import { ExpiredLinkForm } from './expired-link-form'
 
 export const ExpiredLinkCard = () => {
 	const [showModal, setShowModal] = useState(false)
-	const { email } = Object.fromEntries(useSearchParams())
+	const [email, setEmail] = useState('')
 
-	const onFormSubmit = () => {
+	const onFormSubmit = (formEmail: string) => {
 		setShowModal(true)
+		setEmail(formEmail)
 	}
+
+	const fooProp = JSON.stringify(setShowModal)
 
 	return (
 		<Wrapper className='m-0 flex-col'>
@@ -43,7 +44,7 @@ export const ExpiredLinkCard = () => {
 			<SentEmailModal
 				showModal={showModal}
 				email={email}
-				setShowModal={setShowModal}
+				setShowModal={fooProp}
 			/>
 		</Wrapper>
 	)
