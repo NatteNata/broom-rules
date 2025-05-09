@@ -3,12 +3,11 @@
 import type { ResendEmail } from '@entities/auth'
 import { DevTool } from '@hookform/devtools'
 import { useResendPasswordRecovery } from '@use-cases'
-import { useRouter } from 'next/navigation'
+import { redirect } from 'next/navigation'
 import { Button, Input, Typography } from 'penguin-ui'
 import type { SubmitHandler } from 'react-hook-form'
 
 export const ResendPasswordRecoveryForm = () => {
-	const router = useRouter()
 	const { form, resendLink, error, isPending, isSuccess } =
 		useResendPasswordRecovery()
 
@@ -24,7 +23,7 @@ export const ResendPasswordRecoveryForm = () => {
 	}
 
 	if (isSuccess) {
-		router.push('/auth/sign-in')
+		redirect('/auth/sign-in')
 	}
 
 	return (

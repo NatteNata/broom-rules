@@ -4,13 +4,13 @@ import { Typography } from 'penguin-ui'
 export const SignUpTerms = () => (
 	<Typography asElement={'p'} variant={'small_text'}>
 		I agree to the
-		<Link href={'/terms-of-service'}>
+		<Link href={'/auth/terms-of-service'}>
 			<Typography asElement={'span'} className={'mx-1'} variant={'small_link'}>
 				Terms of Service
 			</Typography>
 		</Link>
 		and
-		<Link href={'/privacy-policy'}>
+		<Link href={'/auth/privacy-policy'}>
 			<Typography asElement={'span'} className={'mx-1'} variant={'small_link'}>
 				Privacy Policy
 			</Typography>

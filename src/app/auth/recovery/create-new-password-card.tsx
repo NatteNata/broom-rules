@@ -6,7 +6,11 @@ import { cn } from '@utils'
 
 import { CreateNewPasswordForm } from './create-new-password-form'
 
-export const CreateNewPasswordCard = () => {
+type Props = {
+	code: string
+}
+
+export const CreateNewPasswordCard = ({ code }: Props) => {
 	return (
 		<Card
 			className={cn(
@@ -16,7 +20,7 @@ export const CreateNewPasswordCard = () => {
 			<Typography asElement={'h2'} variant={'h1'}>
 				Create New Password
 			</Typography>
-			<CreateNewPasswordForm />
+			<CreateNewPasswordForm code={code} />
 		</Card>
 	)
 }

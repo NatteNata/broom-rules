@@ -2,7 +2,7 @@
 
 import { Link, SignUpBro } from '@components'
 import { useRegistrationConfirmationMutation } from '@infrastructure/api'
-import { useRouter } from 'next/navigation'
+import { redirect } from 'next/navigation'
 
 import { Button, Typography } from 'penguin-ui'
 import { useEffect } from 'react'
@@ -12,8 +12,6 @@ type Props = {
 }
 
 export const RegistrationConfirmationCard = ({ code }: Props) => {
-	const router = useRouter()
-
 	const { mutate, error, isPending, isSuccess } =
 		useRegistrationConfirmationMutation()
 
@@ -26,7 +24,7 @@ export const RegistrationConfirmationCard = ({ code }: Props) => {
 	}
 
 	if (error) {
-		router.push('/auth/expired-link')
+		redirect('/auth/expired-link')
 	}
 
 	if (isSuccess) {

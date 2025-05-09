@@ -1,3 +1,5 @@
+// noinspection SpellCheckingInspection
+
 import { Container } from '@components'
 import { cn } from '@utils'
 

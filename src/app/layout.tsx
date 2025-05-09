@@ -2,7 +2,6 @@ import '@app/globals.css'
 import 'penguin-ui/styles.css'
 
 import { AppHeader } from '@components'
-import type { User } from '@entities/user'
 import { TanstackProvider } from '@infrastructure/providers'
 import { AuthProvider } from '@infrastructure/providers/auth-provider'
 

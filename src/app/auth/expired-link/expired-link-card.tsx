@@ -16,8 +16,6 @@ export const ExpiredLinkCard = () => {
 		setEmail(formEmail)
 	}
 
-	const fooProp = JSON.stringify(setShowModal)
-
 	return (
 		<Wrapper className='m-0 flex-col'>
 			<div className='max-w-76'>
@@ -44,7 +42,7 @@ export const ExpiredLinkCard = () => {
 			<SentEmailModal
 				showModal={showModal}
 				email={email}
-				setShowModal={fooProp}
+				setShowModalAction={setShowModal}
 			/>
 		</Wrapper>
 	)

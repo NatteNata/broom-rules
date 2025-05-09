@@ -9,53 +9,63 @@ import {
 	resendPasswordRecovery,
 	resendRegistrationEmail,
 } from '@infrastructure/api'
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
-export const useLoginMutation = () =>
-	useMutation({
+export const useLoginMutation = () => {
+	return useMutation({
 		mutationFn: loginUser,
 		onSuccess: data => {
 			sessionStorage.setItem('access_token', data.accessToken)
 		},
 	})
+}
 
-export const useRegisterUserMutation = () =>
-	useMutation({
+export const useRegisterUserMutation = () => {
+	return useMutation({
 		mutationFn: registerUser,
 	})
+}
 
-export const useLogoutMutation = () =>
-	useMutation({
+export const useLogoutMutation = () => {
+	const queryClient = useQueryClient()
+	return useMutation({
 		mutationFn: logout,
 		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ['me'] })
 			sessionStorage.removeItem('access_token')
 		},
 	})
+}
 
-export const useNewPassword = () =>
-	useMutation({
+export const useNewPassword = () => {
+	return useMutation({
 		mutationFn: createNewPassword,
 	})
+}
 
-export const useRecoverPasswordMutation = () =>
-	useMutation({
+export const useRecoverPasswordMutation = () => {
+	return useMutation({
 		mutationFn: recoverPassword,
 	})
+}
 
-export const useResendPasswordRecoveryMutation = () =>
-	useMutation({
+export const useResendPasswordRecoveryMutation = () => {
+	return useMutation({
 		mutationFn: resendPasswordRecovery,
 	})
+}
 
-export const useRegistrationConfirmationMutation = () =>
-	useMutation({
+export const useRegistrationConfirmationMutation = () => {
+	return useMutation({
 		mutationFn: registrationConfirmation,
 	})
+}
 
-export const useResendExpiredLinkMutation = () =>
-	useMutation({
+export const useResendExpiredLinkMutation = () => {
+	return useMutation({
 		mutationFn: resendRegistrationEmail,
 	})
+}
 
 export const useMeQuery = () => {
 	return useQuery({

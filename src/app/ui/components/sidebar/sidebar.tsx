@@ -27,13 +27,13 @@ type RouteLinks = {
 const publicRoutesLinks: RouteLinks = [
 	{
 		label: 'Feed',
-		href: '/profile',
+		href: '/feed',
 		id: 'feed',
 		icon: <IconHomeOutline />,
 	},
 	{
 		label: 'Create',
-		href: '/profile',
+		href: '/create',
 		id: 'create',
 		icon: <IconPlusSquareOutline />,
 	},
@@ -45,11 +45,11 @@ const publicRoutesLinks: RouteLinks = [
 	},
 	{
 		label: 'Messenger',
-		href: '/profile',
+		href: '/feed',
 		id: 'messenger',
 		icon: <IconMessageCircleOutline />,
 	},
-	{ label: 'Search', href: '/profile', id: 'search', icon: <IconSearch /> },
+	{ label: 'Search', href: '/feed', id: 'search', icon: <IconSearch /> },
 ]
 
 const privateRoutesLinks: RouteLinks = [

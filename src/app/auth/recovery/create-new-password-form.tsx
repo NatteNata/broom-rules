@@ -1,31 +1,35 @@
 'use client'
 
-import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useNewPassword } from '@infrastructure/api'
 import {
 	type NewPasswordFormData,
 	newPasswordSchema,
 } from '@infrastructure/validators'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { redirect } from 'next/navigation'
 
 import { Button, Input, Typography } from 'penguin-ui'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 
-export const CreateNewPasswordForm = () => {
-	const { code } = Object.fromEntries(useSearchParams())
-	const router = useRouter()
+type Props = {
+	code: string
+}
 
+export const CreateNewPasswordForm = ({ code }: Props) => {
 	const form = useForm<NewPasswordFormData>({
 		resolver: zodResolver(newPasswordSchema),
 		mode: 'onBlur',
 	})
 
-	const { mutate: createNewPassword, isPending, error } = useNewPassword()
+	const {
+		mutate: createNewPassword,
+		isPending,
+		error,
+		isSuccess,
+	} = useNewPassword()
 
 	const {
 		register,
-		control,
 		handleSubmit,
 		formState: { errors },
 	} = form
@@ -37,7 +41,7 @@ export const CreateNewPasswordForm = () => {
 				recoveryCode: code,
 			},
 			{
-				onSuccess: () => router.push('/auth/login'),
+				onSuccess: redirect('/auth/sign-in'),
 			},
 		)
 	}
@@ -95,7 +99,6 @@ export const CreateNewPasswordForm = () => {
 					{error.message}
 				</Typography>
 			)}
-			<DevTool control={control} />
 		</>
 	)
 }

@@ -11,8 +11,8 @@ type Props = {
 
 export function Wrapper({ children, className, as: Tag = 'div' }: Props) {
 	return (
-		<div className={cn('flex items-center justify-start', className)}>
+		<Tag className={cn('flex items-center justify-start', className)}>
 			{children}
-		</div>
+		</Tag>
 	)
 }

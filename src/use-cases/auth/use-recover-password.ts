@@ -8,7 +8,6 @@ export function useRecoverPassword() {
 	const {
 		mutate: recoverPassword,
 		isPending,
-		isSuccess,
 		error,
 	} = useRecoverPasswordMutation()
 
@@ -21,7 +20,6 @@ export function useRecoverPassword() {
 		recoverPassword,
 		isPending,
 		error,
-		isSuccess,
 		form,
 	}
 }

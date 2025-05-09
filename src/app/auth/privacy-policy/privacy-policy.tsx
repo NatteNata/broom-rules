@@ -1,3 +1,5 @@
+// noinspection SpellCheckingInspection
+
 import { Typography } from 'penguin-ui'
 
 import { Container } from '@components'

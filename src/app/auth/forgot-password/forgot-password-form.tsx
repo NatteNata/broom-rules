@@ -4,7 +4,7 @@ import { Link } from '@components'
 import type { RecoverPassword } from '@entities/user'
 import { DevTool } from '@hookform/devtools'
 import { Button, Input, Typography } from 'penguin-ui'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import type { SubmitHandler } from 'react-hook-form'
 import { useRecoverPassword } from 'src/use-cases/auth/use-recover-password'
 
@@ -14,8 +14,7 @@ type Props = {
 
 export const ForgotPasswordForm = ({ token }: Props) => {
 	const [showMore, setShowMore] = useState(false)
-	const { form, recoverPassword, error, isPending, isSuccess } =
-		useRecoverPassword()
+	const { form, recoverPassword, error, isPending } = useRecoverPassword()
 
 	const {
 		register,

@@ -2,7 +2,6 @@
 
 import { FormCheckbox } from '@components'
 import type { RegisterUser } from '@entities/user'
-import { DevTool } from '@hookform/devtools'
 
 import { useRegisterUser } from '@use-cases'
 import { Button, Input, Typography } from 'penguin-ui'
@@ -10,11 +9,10 @@ import type { SubmitHandler } from 'react-hook-form'
 import { SignUpTerms } from './sign-up-terms'
 
 type Props = {
-	onFormSubmit: string
+	onFormSubmitAction: (email: string) => void
 }
 
-export const SignUpForm = ({ onFormSubmit }: Props) => {
-	const foo = JSON.parse(onFormSubmit)
+export const SignUpForm = ({ onFormSubmitAction }: Props) => {
 	const { form, registerUser, isPending, error } = useRegisterUser()
 
 	const {
@@ -27,7 +25,7 @@ export const SignUpForm = ({ onFormSubmit }: Props) => {
 	const onSubmit: SubmitHandler<RegisterUser> = data => {
 		const { agreeToTerms, passwordConfirm, ...requestArgs } = data
 		registerUser(requestArgs, {
-			onSuccess: () => foo(data.email),
+			onSuccess: () => onFormSubmitAction(data.email),
 		})
 	}
 
@@ -98,7 +96,6 @@ export const SignUpForm = ({ onFormSubmit }: Props) => {
 					</Typography>
 				)}
 			</form>
-			<DevTool control={control} />
 		</>
 	)
 }

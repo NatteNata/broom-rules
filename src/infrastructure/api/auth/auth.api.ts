@@ -10,7 +10,6 @@ import type {
 	RecoveryCodeResponse,
 	RegistrationArgs,
 	RegistrationConfirmationArgs,
-	ServerError,
 } from '@infrastructure/api'
 
 import { baseApi } from '../base.api'

@@ -18,7 +18,7 @@ export default function PrivacyPolicyPage() {
 					className={cn('mx-0 px-0 text-light-100')}
 					variant={'ghost'}
 				>
-					<Link href={'/sign-up'}>
+					<Link href={'/auth/sign-up'}>
 						<IconArrowBackOutline />
 						Back to Sign Up
 					</Link>
