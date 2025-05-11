@@ -1,8 +1,8 @@
 'use client'
 
-import { Spinner } from '@app/ui/components/spinner/spinner'
+import { Spinner } from '@app/ui/components'
 import { useMeQuery } from '@infrastructure/api'
-import { useAuthContext } from '@infrastructure/providers/auth-provider'
+import { useAuthContext } from '@infrastructure/providers'
 import { redirect } from 'next/navigation'
 
 export default function ProfileRedirect() {

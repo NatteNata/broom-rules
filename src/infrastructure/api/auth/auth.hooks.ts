@@ -67,7 +67,7 @@ export const useResendExpiredLinkMutation = () => {
 	})
 }
 
-export const useMeQuery = (isAuthed: boolean) => {
+export const useMeQuery = (isAuthed?: boolean) => {
 	return useQuery({
 		queryKey: ['me'],
 		queryFn: getMe,
