@@ -1,13 +1,16 @@
 'use client'
 
+import { Spinner } from '@app/ui/components/spinner/spinner'
 import { useMeQuery } from '@infrastructure/api'
+import { useAuthContext } from '@infrastructure/providers/auth-provider'
 import { redirect } from 'next/navigation'
 
 export default function ProfileRedirect() {
-	const { data: currentUser, isLoading, error } = useMeQuery()
+	const { isAuthed } = useAuthContext()
+	const { data: currentUser, isLoading, error } = useMeQuery(isAuthed)
 
 	if (error) return <h2>Unable to get user. {error.message}</h2>
-	if (isLoading) return <h2>Loading...</h2>
+	if (isLoading) return <Spinner />
 
 	redirect(`/profile/${currentUser?.userId}`)
 }
