@@ -1,5 +1,5 @@
 import '@app/globals.css'
-import 'penguin-ui/styles.css'
+import '@tornata/penguin-ui/styles.css'
 
 import { AppHeader } from '@components'
 import { TanstackProvider } from '@infrastructure/providers'

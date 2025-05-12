@@ -3,7 +3,7 @@
 import { Link } from '@components'
 import type { RecoverPassword } from '@entities/user'
 import { DevTool } from '@hookform/devtools'
-import { Button, Input, Typography } from 'penguin-ui'
+import { Button, Input, Typography } from '@tornata/penguin-ui'
 import { useState } from 'react'
 import type { SubmitHandler } from 'react-hook-form'
 import { useRecoverPassword } from 'src/use-cases/auth/use-recover-password'

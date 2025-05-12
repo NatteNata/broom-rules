@@ -1,8 +1,8 @@
 'use client'
 
 import { Wrapper } from '@components'
+import { Button, Typography } from '@tornata/penguin-ui'
 import { useRouter } from 'next/navigation'
-import { Button, Typography } from 'penguin-ui'
 import { startTransition } from 'react'
 
 export default function ErrorBoundary({

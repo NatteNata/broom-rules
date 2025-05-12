@@ -1,8 +1,8 @@
 'use client'
 
 import { Link } from '@components'
+import { Button, Card, Typography } from '@tornata/penguin-ui'
 import { cn } from '@utils'
-import { Button, Card, Typography } from 'penguin-ui'
 import { ResendPasswordRecoveryForm } from './resend-password-recovery-form'
 
 export const ResendPasswordRecoveryCard = () => {
