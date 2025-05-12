@@ -2,7 +2,7 @@
 
 import { SentEmailModal } from '@app/ui/components/modals/sent-email-modal'
 import { TimeManagementRafiki, Wrapper } from '@components'
-import { Typography } from 'penguin-ui'
+import { Typography } from '@tornata/penguin-ui'
 import { useState } from 'react'
 
 import { ExpiredLinkForm } from './expired-link-form'

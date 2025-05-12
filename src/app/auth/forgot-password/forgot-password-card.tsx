@@ -2,8 +2,8 @@
 
 import { Link } from '@components'
 import { Recapcha } from '@infrastructure/recapcha'
+import { Button, Card, Typography } from '@tornata/penguin-ui'
 import { cn } from '@utils'
-import { Button, Card, Typography } from 'penguin-ui'
 import { useState } from 'react'
 
 import { ForgotPasswordForm } from './forgot-password-form'

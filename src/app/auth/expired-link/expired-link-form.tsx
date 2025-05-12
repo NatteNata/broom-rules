@@ -1,6 +1,6 @@
 import type { ResendEmail } from '@entities/auth'
 import { DevTool } from '@hookform/devtools'
-import { Button, Input, Typography } from 'penguin-ui'
+import { Button, Input, Typography } from '@tornata/penguin-ui'
 import type { SubmitHandler } from 'react-hook-form'
 import { useResendEmail } from 'src/use-cases/auth/use-resend-expired-link'
 
