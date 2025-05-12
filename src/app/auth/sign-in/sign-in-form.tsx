@@ -62,7 +62,7 @@ export const SignInForm = () => {
 					type={'submit'}
 					disabled={isPending || !isValid}
 				>
-					{isPending ? 'Submitting..' : 'Sign in'}
+					{isPending ? 'Submitting...' : 'Sign in'}
 				</Button>
 			</fieldset>
 			{error && (

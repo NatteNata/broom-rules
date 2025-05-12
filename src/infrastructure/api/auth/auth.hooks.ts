@@ -12,9 +12,11 @@ import {
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
 export const useLoginMutation = () => {
+	const queryClient = useQueryClient()
 	return useMutation({
 		mutationFn: loginUser,
 		onSuccess: data => {
+			queryClient.invalidateQueries({ queryKey: ['me'] })
 			sessionStorage.setItem('access_token', data.accessToken)
 		},
 	})
@@ -29,10 +31,14 @@ export const useRegisterUserMutation = () => {
 export const useLogoutMutation = () => {
 	const queryClient = useQueryClient()
 	return useMutation({
-		mutationFn: logout,
+		mutationFn: async () => {
+			await logout
+			sessionStorage.removeItem('access_token')
+			queryClient.removeQueries({ queryKey: ['me'] })
+		},
+
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['me'] })
-			sessionStorage.removeItem('access_token')
 		},
 	})
 }
@@ -71,6 +77,8 @@ export const useMeQuery = (isAuthed?: boolean) => {
 	return useQuery({
 		queryKey: ['me'],
 		queryFn: getMe,
-		enabled: isAuthed,
+
+		retry: false,
+
 	})
 }

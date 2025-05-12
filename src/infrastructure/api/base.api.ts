@@ -1,5 +1,5 @@
 import type { UpdateTokenResponse } from '@infrastructure/api/auth'
-import ky from 'ky'
+import ky, { HTTPError } from 'ky'
 
 export const baseApi = ky.create({
 	prefixUrl: `${process.env.NEXT_PUBLIC_API_URL}api/`,
@@ -8,7 +8,6 @@ export const baseApi = ky.create({
 		beforeError: [
 			async error => {
 				const { response } = error
-
 				try {
 					const parsedClone = await response.clone().json()
 					if (parsedClone?.messages) {
@@ -30,7 +29,10 @@ export const baseApi = ky.create({
 			},
 		],
 		beforeRetry: [
-			async () => {
+			async ({ error }) => {
+				if (error instanceof HTTPError && error.response?.status === 401) {
+					return
+				}
 				try {
 					const data = await ky
 						.post<UpdateTokenResponse>(
