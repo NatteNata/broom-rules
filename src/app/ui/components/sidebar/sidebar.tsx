@@ -1,7 +1,6 @@
 'use client'
 
-import { useLogoutMutation } from '@infrastructure/api'
-import { useAuthContext } from '@infrastructure/providers/auth-provider'
+import { useLogoutMutation, useMeQuery } from '@infrastructure/api'
 import {
 	IconBookmarkOutline,
 	IconHomeOutline,
@@ -15,6 +14,7 @@ import {
 	Typography,
 } from '@tornata/penguin-ui'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import type { ReactNode } from 'react'
 
 type RouteLinks = {
@@ -68,11 +68,16 @@ const privateRoutesLinks: RouteLinks = [
 ]
 
 export function Sidebar() {
-	const { isAuthed } = useAuthContext()
+	const router = useRouter()
+	const { data } = useMeQuery()
+	const isAuthed = !!data
+
 	const { mutate: logout, isPending, error } = useLogoutMutation()
 
 	const onClick = () => {
-		logout()
+		logout(undefined, {
+			onSuccess: () => router.push('/auth/sign-in'),
+		})
 	}
 
 	return (
