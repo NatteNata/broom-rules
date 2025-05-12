@@ -1,7 +1,7 @@
 'use client'
 
 import { Container, Link } from '@app/ui/components'
-import { Button, Header, LogoComponent } from 'penguin-ui'
+import { Button, Header, LogoComponent } from '@tornata/penguin-ui'
 
 export const AppHeader = () => {
 	return (

@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Dialog, IconClose } from 'penguin-ui'
+import { Button, Dialog, IconClose } from '@tornata/penguin-ui'
 
 type Props = {
 	showModal: boolean

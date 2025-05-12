@@ -2,9 +2,9 @@
 
 import type { ResendEmail } from '@entities/auth'
 import { DevTool } from '@hookform/devtools'
+import { Button, Input, Typography } from '@tornata/penguin-ui'
 import { useResendPasswordRecovery } from '@use-cases'
 import { redirect } from 'next/navigation'
-import { Button, Input, Typography } from 'penguin-ui'
 import type { SubmitHandler } from 'react-hook-form'
 
 export const ResendPasswordRecoveryForm = () => {

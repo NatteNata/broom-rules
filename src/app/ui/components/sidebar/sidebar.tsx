@@ -2,7 +2,6 @@
 
 import { useLogoutMutation } from '@infrastructure/api'
 import { useAuthContext } from '@infrastructure/providers/auth-provider'
-import Link from 'next/link'
 import {
 	IconBookmarkOutline,
 	IconHomeOutline,
@@ -14,7 +13,8 @@ import {
 	IconTrendingUp,
 	Sidebar as SidebarComp,
 	Typography,
-} from 'penguin-ui'
+} from '@tornata/penguin-ui'
+import Link from 'next/link'
 import type { ReactNode } from 'react'
 
 type RouteLinks = {

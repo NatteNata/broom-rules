@@ -1,5 +1,5 @@
 import { Link } from '@components'
-import { Typography } from 'penguin-ui'
+import { Typography } from '@tornata/penguin-ui'
 
 export const SignUpTerms = () => (
 	<Typography asElement={'p'} variant={'small_text'}>

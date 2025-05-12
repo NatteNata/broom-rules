@@ -4,7 +4,7 @@ import { Link, SignUpBro } from '@components'
 import { useRegistrationConfirmationMutation } from '@infrastructure/api'
 import { redirect } from 'next/navigation'
 
-import { Button, Typography } from 'penguin-ui'
+import { Button, Typography } from '@tornata/penguin-ui'
 import { useEffect } from 'react'
 
 type Props = {

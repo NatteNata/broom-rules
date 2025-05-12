@@ -1,6 +1,6 @@
 // noinspection SpellCheckingInspection
 
-import { Typography } from 'penguin-ui'
+import { Typography } from '@tornata/penguin-ui'
 
 import { Container } from '@components'
 import { cn } from '@utils'

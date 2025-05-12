@@ -2,8 +2,8 @@
 
 import { Link } from '@components'
 import type { LoginUser } from '@entities/user'
+import { Button, Input, Typography } from '@tornata/penguin-ui'
 import { redirect } from 'next/navigation'
-import { Button, Input, Typography } from 'penguin-ui'
 import { useLoginUser } from 'src/use-cases/auth/use-login-user'
 
 export const SignInForm = () => {

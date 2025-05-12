@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Card, Typography } from 'penguin-ui'
+import { Button, Card, Typography } from '@tornata/penguin-ui'
 
 import { Link } from '@components'
 import { cn } from '@utils'

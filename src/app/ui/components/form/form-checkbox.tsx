@@ -1,6 +1,6 @@
 'use client'
 
-import { Checkbox } from 'penguin-ui'
+import { Checkbox } from '@tornata/penguin-ui'
 import type { ComponentProps } from 'react'
 import {
 	type Control,

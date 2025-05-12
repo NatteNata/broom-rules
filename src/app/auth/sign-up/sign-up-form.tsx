@@ -3,8 +3,8 @@
 import { FormCheckbox } from '@components'
 import type { RegisterUser } from '@entities/user'
 
+import { Button, Input, Typography } from '@tornata/penguin-ui'
 import { useRegisterUser } from '@use-cases'
-import { Button, Input, Typography } from 'penguin-ui'
 import type { SubmitHandler } from 'react-hook-form'
 import { SignUpTerms } from './sign-up-terms'
 

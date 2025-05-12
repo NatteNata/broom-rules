@@ -3,7 +3,7 @@
 import { Container } from '@components'
 import { cn } from '@utils'
 
-import { Typography } from 'penguin-ui'
+import { Typography } from '@tornata/penguin-ui'
 
 export const TermsOfService = () => {
 	return (

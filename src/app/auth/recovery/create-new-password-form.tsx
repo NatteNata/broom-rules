@@ -8,7 +8,7 @@ import {
 } from '@infrastructure/validators'
 import { redirect } from 'next/navigation'
 
-import { Button, Input, Typography } from 'penguin-ui'
+import { Button, Input, Typography } from '@tornata/penguin-ui'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 
 type Props = {
@@ -21,12 +21,7 @@ export const CreateNewPasswordForm = ({ code }: Props) => {
 		mode: 'onBlur',
 	})
 
-	const {
-		mutate: createNewPassword,
-		isPending,
-		error,
-		isSuccess,
-	} = useNewPassword()
+	const { mutate: createNewPassword, isPending, error } = useNewPassword()
 
 	const {
 		register,
