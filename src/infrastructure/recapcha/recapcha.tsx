@@ -5,7 +5,7 @@ export const Recapcha = ({
 }: {
 	returnToken: (token: string) => void
 }) => {
-	const key = process.env.NEXT_PUBLIC_RECAPCHA_SITE_KEY_LOCALHOST ?? ''
+	const key = process.env.NEXT_PUBLIC_RECAPCHA_SITE_KEY ?? ''
 
 	const handleToken = (token: string | null) => {
 		if (!token) {
