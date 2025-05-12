@@ -1,6 +1,5 @@
 'use client'
 
-
 import { useLogoutMutation, useMeQuery } from '@infrastructure/api'
 
 import {

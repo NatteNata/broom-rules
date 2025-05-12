@@ -79,6 +79,5 @@ export const useMeQuery = (isAuthed?: boolean) => {
 		queryFn: getMe,
 
 		retry: false,
-
 	})
 }
