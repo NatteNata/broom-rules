@@ -1,5 +1,6 @@
 import {
 	createNewPassword,
+	getGoogleAuth,
 	getMe,
 	loginUser,
 	logout,
@@ -78,5 +79,17 @@ export const useMeQuery = () => {
 		queryKey: ['me'],
 		queryFn: getMe,
 		retry: false,
+	})
+}
+
+export const useGoogleAuthMutations = () => {
+	const queryClient = useQueryClient()
+	return useMutation({
+		mutationFn: getGoogleAuth,
+		onMutate: () => queryClient.removeQueries(),
+		onSuccess: data => {
+			const { accessToken, email } = data
+			sessionStorage.setItem('access_token', accessToken)
+		},
 	})
 }

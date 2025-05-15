@@ -1,14 +1,11 @@
-import {Profile} from './profile/profile'
+import { Profile } from './profile/profile'
 
 export default async function ProfilePage({
-    params,
+	params,
 }: {
-    params: Promise<{ profileId: string }>
-})
-{
-    const {profileId} = await params
+	params: Promise<{ profileId: string }>
+}) {
+	const { profileId } = await params
 
-    return (
-        <Profile profileId={profileId}/>
-    )
+	return <Profile profileId={profileId} />
 }
