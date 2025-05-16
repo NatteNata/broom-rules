@@ -1,6 +1,6 @@
 'use client'
 
-import { useGoogleAuthMutations } from '@infrastructure/api'
+import { useGoogleOAuthMutations } from '@infrastructure/api'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
@@ -9,7 +9,7 @@ type Props = {
 }
 
 export function GoogleOAuth({ code }: Props) {
-	const { mutate: getGoogleAuth } = useGoogleAuthMutations()
+	const { mutate: getGoogleAuth } = useGoogleOAuthMutations()
 	const router = useRouter()
 
 	useEffect(() => {
@@ -17,7 +17,7 @@ export function GoogleOAuth({ code }: Props) {
 			getGoogleAuth(
 				{
 					code,
-					redirectUrl: `${process.env.NEXT_PUBLIC_LOCALHOST}`,
+					redirectUrl: `${process.env.NEXT_PUBLIC_BASE_URL}`,
 				},
 				{
 					onSuccess: () => router.push('/feed'),

@@ -82,14 +82,14 @@ export const useMeQuery = () => {
 	})
 }
 
-export const useGoogleAuthMutations = () => {
+export const useGoogleOAuthMutations = () => {
 	const queryClient = useQueryClient()
 	return useMutation({
 		mutationFn: getGoogleAuth,
-		onMutate: () => queryClient.removeQueries(),
 		onSuccess: data => {
-			const { accessToken, email } = data
+			const { accessToken } = data
 			sessionStorage.setItem('access_token', accessToken)
+			queryClient.invalidateQueries({ queryKey: ['me'] })
 		},
 	})
 }

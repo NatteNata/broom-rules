@@ -1,4 +1,4 @@
-import { GoogleAuth } from '@app/auth/google-auth/google-auth'
+import { GoogleOAuth } from '@app/auth/(oauth)/google-oauth'
 import { redirect } from 'next/navigation'
 
 type Props = {
@@ -11,7 +11,7 @@ export default async function Home({ searchParams }: Props) {
 	const code = searchParams.code
 
 	if (code) {
-		return <GoogleAuth code={code} />
+		return <GoogleOAuth code={code} />
 	}
 
 	redirect('/feed')
