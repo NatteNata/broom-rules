@@ -1,5 +1,7 @@
 import type {
 	EmailResendArgs,
+	GetGoogleAuthArgs,
+	GetGoogleAuthResponse,
 	LoginArgs,
 	LoginResponse,
 	MeResponse,
@@ -62,4 +64,10 @@ export const registrationConfirmation = async (
 
 export const getMe = async () => {
 	return await authApi.get<MeResponse>('me').json()
+}
+
+export const getGoogleAuth = async (json: GetGoogleAuthArgs) => {
+	return await authApi
+		.post<GetGoogleAuthResponse>('google/login', { json })
+		.json()
 }

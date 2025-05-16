@@ -1,8 +1,8 @@
 'use client'
 
-import { Button, Card, Typography } from '@tornata/penguin-ui'
-
+import { OAuth } from '@app/auth/(oauth)/oauth'
 import { Link } from '@components'
+import { Button, Card, Typography } from '@tornata/penguin-ui'
 import { cn } from '@utils'
 
 import { SignInForm } from './sign-in-form'
@@ -17,6 +17,7 @@ export const SignInCard = () => {
 			<Typography asElement={'h2'} variant={'h1'}>
 				Sign in
 			</Typography>
+			<OAuth />
 			<SignInForm />
 			<Typography
 				asElement='span'

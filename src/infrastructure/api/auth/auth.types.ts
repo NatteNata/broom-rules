@@ -1,25 +1,38 @@
 import type { Auth } from '@entities/auth'
-import type { LoginUser, RegisterUser, User } from '@entities/user'
+import type { RegisterUser, User } from '@entities/user'
+
+export type LoginArgs = Pick<Auth, 'email' | 'password'>
+export type RecoverPasswordArgs = Pick<Auth, 'email' | 'recaptcha'>
+export type PasswordRecoveryResendArgs = Pick<Auth, 'email'>
+export type EmailResendArgs = Pick<Auth, 'email'>
+export type RegistrationConfirmationArgs = {
+	confirmationCode: string
+}
 
 export type RegistrationArgs = Omit<
 	RegisterUser,
 	'agreeToTerms' | 'passwordConfirm'
 >
 
-export type LoginArgs = LoginUser
-
-export type LoginResponse = Pick<Auth, 'accessToken'>
-
-export type UpdateTokenResponse = Pick<Auth, 'accessToken'>
-
-export type RecoverPasswordArgs = Pick<Auth, 'email' | 'recaptcha'>
-
-export type MeResponse = Omit<User, 'password'> & {
-	isBlocked: boolean
+export type GetGoogleAuthArgs = {
+	redirectUrl: string
+	code: string
 }
 
-export type RegistrationConfirmationArgs = {
-	confirmationCode: string
+export type NewPasswordArgs = {
+	newPassword: string
+	recoveryCode: string
+}
+
+export type RecoveryCodeArgs = {
+	recoveryCode: string
+}
+
+export type LoginResponse = Pick<Auth, 'accessToken'>
+export type UpdateTokenResponse = Pick<Auth, 'accessToken'>
+export type GetGoogleAuthResponse = Pick<Auth, 'accessToken' | 'email'>
+export type MeResponse = Omit<User, 'password'> & {
+	isBlocked: boolean
 }
 
 export type ServerError = {
@@ -31,21 +44,6 @@ export type ServerError = {
 		},
 	]
 	statusCode: number
-}
-
-export type EmailResendArgs = {
-	email: string
-}
-
-export type PasswordRecoveryResendArgs = Pick<RecoverPasswordArgs, 'email'>
-
-export type NewPasswordArgs = {
-	newPassword: string
-	recoveryCode: string
-}
-
-export type RecoveryCodeArgs = {
-	recoveryCode: string
 }
 
 export type RecoveryCodeResponse = {

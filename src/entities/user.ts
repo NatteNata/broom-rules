@@ -10,5 +10,5 @@ export type User = {
 export type RegisterUser = Omit<User, 'userId'> &
 	Pick<Auth, 'passwordConfirm' | 'agreeToTerms'>
 
-export type LoginUser = Pick<Auth, 'email' | 'password'>
 export type RecoverPassword = Pick<Auth, 'email'>
+export type LoginUser = Pick<Auth, 'email' | 'password'>
