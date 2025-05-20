@@ -1,4 +1,5 @@
 import type { UpdateTokenResponse } from '@infrastructure/api/auth'
+import { getItem, setItem } from '@utils'
 import ky, { HTTPError } from 'ky'
 
 export const baseApi = ky.create({
@@ -22,7 +23,7 @@ export const baseApi = ky.create({
 		],
 		beforeRequest: [
 			async request => {
-				const accessToken = sessionStorage.getItem('access_token')
+				const accessToken = getItem('access_token')
 				if (accessToken) {
 					request.headers.set('Authorization', `Bearer ${accessToken}`)
 				}
@@ -40,7 +41,7 @@ export const baseApi = ky.create({
 						)
 						.json()
 
-					sessionStorage.setItem('access_token', data.accessToken)
+					setItem('access_token', data.accessToken)
 				} catch (error) {
 					console.log('Failed to update access token', error)
 				}
