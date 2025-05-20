@@ -11,6 +11,7 @@ import {
 	resendRegistrationEmail,
 } from '@infrastructure/api'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { removeItem, setItem } from '@utils'
 
 export const useLoginMutation = () => {
 	const queryClient = useQueryClient()
@@ -18,7 +19,7 @@ export const useLoginMutation = () => {
 		mutationFn: loginUser,
 		onSuccess: data => {
 			queryClient.invalidateQueries({ queryKey: ['me'] })
-			sessionStorage.setItem('access_token', data.accessToken)
+			setItem('access_token', data.accessToken)
 		},
 	})
 }
@@ -34,7 +35,7 @@ export const useLogoutMutation = () => {
 	return useMutation({
 		mutationFn: async () => {
 			await logout
-			sessionStorage.removeItem('access_token')
+			removeItem('access_token')
 			queryClient.removeQueries({ queryKey: ['me'] })
 		},
 
@@ -88,7 +89,7 @@ export const useGoogleOAuthMutations = () => {
 		mutationFn: getGoogleAuth,
 		onSuccess: data => {
 			const { accessToken } = data
-			sessionStorage.setItem('access_token', accessToken)
+			setItem('access_token', accessToken)
 			queryClient.invalidateQueries({ queryKey: ['me'] })
 		},
 	})
