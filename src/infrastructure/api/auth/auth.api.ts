@@ -1,5 +1,7 @@
 import type {
 	EmailResendArgs,
+	GetGithubOAuthArgs,
+	GetGithubOAuthResponse,
 	GetGoogleAuthArgs,
 	GetGoogleAuthResponse,
 	LoginArgs,
@@ -69,5 +71,11 @@ export const getMe = async () => {
 export const getGoogleAuth = async (json: GetGoogleAuthArgs) => {
 	return await authApi
 		.post<GetGoogleAuthResponse>('google/login', { json })
+		.json()
+}
+
+export const getGithubOAuth = async (json: GetGithubOAuthArgs) => {
+	return await authApi
+		.get<GetGithubOAuthResponse>('github/login', { json })
 		.json()
 }

@@ -19,6 +19,13 @@ export type GetGoogleAuthArgs = {
 	code: string
 }
 
+export type GetGithubOAuthArgs = {
+	redirect_url: string
+	enabled: boolean
+}
+
+export type GetGithubOAuthResponse = Pick<Auth, 'accessToken' | 'email'>
+
 export type NewPasswordArgs = {
 	newPassword: string
 	recoveryCode: string

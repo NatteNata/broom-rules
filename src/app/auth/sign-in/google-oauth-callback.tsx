@@ -8,7 +8,7 @@ type Props = {
 	code: string
 }
 
-export function GoogleOAuth({ code }: Props) {
+export function GoogleOAuthCallback({ code }: Props) {
 	const { mutate: getGoogleAuth } = useGoogleOAuthMutations()
 	const router = useRouter()
 

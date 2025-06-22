@@ -1,3 +1,5 @@
+'use client'
+
 import { Link } from '@components'
 import { IconGoogle } from '@tornata/penguin-ui'
 
@@ -7,12 +9,10 @@ const googleOAuthURL = `${process.env.NEXT_PUBLIC_GOOGLE_OAUTH_URL}?
 	scope=openid%20email%20profile&
 	response_type=code`
 
-export const OAuth = () => {
+export function GoogleOAuth() {
 	return (
-		<div className={'flex items-center justify-center pt-6'}>
-			<Link href={googleOAuthURL}>
-				<IconGoogle width={36} height={36} />
-			</Link>
-		</div>
+		<Link href={googleOAuthURL}>
+			<IconGoogle width={36} height={36} />
+		</Link>
 	)
 }

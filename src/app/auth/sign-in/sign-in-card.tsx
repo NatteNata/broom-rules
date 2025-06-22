@@ -1,6 +1,6 @@
 'use client'
 
-import { OAuth } from '@app/auth/(oauth)/oauth'
+import { OAuth } from '@app/auth/sign-in/oauth'
 import { Link } from '@components'
 import { Button, Card, Typography } from '@tornata/penguin-ui'
 import { cn } from '@utils'
